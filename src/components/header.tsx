@@ -10,7 +10,7 @@ const a = css`
   color: #303030;
   &:hover {
     cursor: pointer;
-    color: #f857b5;
+    color: #f628a0;
   }
 `
 
@@ -30,7 +30,7 @@ export default function Header() {
               ${a};
               width: 120px;
               height: 120px;
-              background-color: #303030;
+              background-color: #30303070;
               color: #fff;
               border-radius: 60px;
             `}
@@ -53,7 +53,7 @@ export default function Header() {
             css={css`
               width: 30px;
               height: 30px;
-              background-color: #303030;
+              background-color: #30303070;
               border-radius: 15px;
             `}
           />

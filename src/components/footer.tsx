@@ -13,7 +13,7 @@ const icon = css`
   font-size: 2em;
   margin-left: 2rem;
   &:hover {
-    color: #f857b5;
+    color: #f628a0;
     transform: scale(1.3);
     cursor: pointer;
   }

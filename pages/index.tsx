@@ -5,19 +5,19 @@ import Layout from '../src/components/layout'
 import Header from '../src/components/header'
 import Footer from '../src/components/footer'
 import config from '../src/lib/config'
-import { text, main, container } from '../src/components/styles/styles'
+import { text, main } from '../src/components/styles/styles'
 
 const ul = css`
   ${text};
   padding: 0 1rem 2rem;
   & > li > span {
-    color: #f857b5;
+    color: #f628a0;
   }
 `
 
 const a = css`
   ${text};
-  color: #f857b5;
+  color: #f628a0;
   text-decoration: none;
   &:hover {
     cursor: pointer;
@@ -40,7 +40,7 @@ export default function Home() {
     <Layout>
       <Header />
       <main css={main}>
-        <div css={container}>
+        <section>
           <h2 css={text}>Hey ✌️</h2>
           <p css={text}>
             My name is <strong>{config.author}</strong>, {config.description}
@@ -59,7 +59,7 @@ export default function Home() {
             If you wanna talk about your <i css={i}>(open/closed)</i> projects
             or business, you can{' '}
             <Link href='/contact'>
-              <a css={a}>contact me!!</a>
+              <a css={a}>contact me!</a>
             </Link>
           </p>
           <p css={text}>
@@ -70,7 +70,7 @@ export default function Home() {
             </a>{' '}
             with an explanation of how to do a deploy with your data 💚
           </p>
-        </div>
+        </section>
       </main>
       <Footer />
     </Layout>
