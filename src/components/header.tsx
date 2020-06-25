@@ -1,18 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import Link from 'next/link'
-
-const a = css`
-  margin-right: 1rem;
-  text-transform: uppercase;
-  font-size: 16px;
-  text-decoration: none;
-  color: #303030;
-  &:hover {
-    cursor: pointer;
-    color: #f628a0;
-  }
-`
+import ActiveLink from './active-link'
 
 export default function Header() {
   return (
@@ -24,31 +12,27 @@ export default function Header() {
           align-items: flex-end;
         `}
       >
-        <Link href='/'>
-          <a
+        <ActiveLink href='/'>
+          <div
             css={css`
-              ${a};
               width: 120px;
               height: 120px;
               background-color: #30303070;
-              color: #fff;
               border-radius: 60px;
+              &:hover {
+                cursor: pointer;
+              }
             `}
           />
-        </Link>
+        </ActiveLink>
         <div
           css={css`
             display: flex;
             align-items: center;
           `}
         >
-          <Link href='/contact'>
-            <a css={a}>contact</a>
-          </Link>
-          <Link href='/blog'>
-            <a css={a}>blog</a>
-          </Link>
-
+          <ActiveLink href='/contact'>contact</ActiveLink>
+          <ActiveLink href='/blog'>blog</ActiveLink>
           <div
             css={css`
               width: 30px;

@@ -93,7 +93,7 @@ export const form = css`
       background-image: linear-gradient(
         to right,
         #73dbc4 0%,
-        #c40876 60%,
+        #c40876 80%,
         #73dbc4 100%
       );
     }
