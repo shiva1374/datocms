@@ -32,7 +32,7 @@ export default function Header() {
           `}
         >
           <ActiveLink href='/contact'>contact</ActiveLink>
-          <ActiveLink href='/blog'>blog</ActiveLink>
+          <ActiveLink href='/posts'>posts</ActiveLink>
           <div
             css={css`
               width: 30px;

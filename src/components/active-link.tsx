@@ -24,7 +24,7 @@ export default function ActiveLink({ href, children }: props) {
   const { pathname } = useRouter()
   return (
     <Link href={`${href}`}>
-      <a css={a(pathname === href)}>{children}</a>
+      <a css={a(pathname.includes(href))}>{children}</a>
     </Link>
   )
 }

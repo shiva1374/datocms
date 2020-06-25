@@ -1,10 +1,11 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
-import Layout from '../src/components/layout'
-import Header from '../src/components/header'
-import Footer from '../src/components/footer'
-import Date from '../src/components/date'
-import { main, text } from '../src/components/styles/styles'
+import Link from 'next/link'
+import Layout from '../../src/components/layout'
+import Header from '../../src/components/header'
+import Footer from '../../src/components/footer'
+import Date from '../../src/components/date'
+import { main, text } from '../../src/components/styles/styles'
 
 const list = css`
   list-style: none;
@@ -20,13 +21,23 @@ const titleStyled = css`
   line-height: 1.25;
   margin-bottom: 0.75rem;
   text-transform: uppercase;
+  text-decoration: none;
+  color: #131415;
+  &:hover {
+    cursor: pointer;
+    color: #f628a0;
+  }
 `
 
 export default function Blog({ posts }) {
   const renderPosts = () =>
     posts.map(({ id, title, body }) => (
       <li css={listElement} key={id.toString()}>
-        <h2 css={titleStyled}>{title}</h2>
+        <Link href='/posts/[pid]' as={`/posts/${id}`}>
+          <a css={titleStyled}>
+            <h2>{title}</h2>
+          </a>
+        </Link>
         <p css={text}>{body}</p>
         <small>
           <Date dateString={'2020-01-01'} />
