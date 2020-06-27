@@ -8,7 +8,7 @@ const a = (activeLink?: boolean) => css`
   text-transform: uppercase;
   font-size: 16px;
   text-decoration: none;
-  color: ${activeLink ? '#f628a0' : '#303030'};
+  color: ${activeLink && '#f628a0'};
   &:hover {
     cursor: pointer;
     color: #f628a0;

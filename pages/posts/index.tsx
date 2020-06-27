@@ -6,6 +6,8 @@ import Header from '../../src/components/header'
 import Footer from '../../src/components/footer'
 import Date from '../../src/components/date'
 import { main, text } from '../../src/components/styles/styles'
+import { useTheme } from 'emotion-theming'
+import { theme } from '../../src/lib/theme'
 
 const list = css`
   list-style: none;
@@ -30,11 +32,17 @@ const titleStyled = css`
 `
 
 export default function Blog({ posts }) {
+  const theme = useTheme<theme>()
   const renderPosts = () =>
     posts.map(({ id, title, body }) => (
       <li css={listElement} key={id.toString()}>
         <Link href='/posts/[pid]' as={`/posts/${id}`}>
-          <a css={titleStyled}>
+          <a
+            css={css`
+              ${titleStyled};
+              color: ${theme.body};
+            `}
+          >
             <h2>{title}</h2>
           </a>
         </Link>

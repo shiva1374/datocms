@@ -14,6 +14,7 @@ export default function Contact() {
     name: '',
     message: '',
   })
+  const [loading, setLoading] = React.useState(false)
 
   const saveToFormData = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -21,6 +22,7 @@ export default function Contact() {
   const onSubmit = async (e) => {
     e.preventDefault()
     setFormData({ email: '', name: '', message: '' })
+    setLoading(!loading)
   }
 
   return (
@@ -38,7 +40,7 @@ export default function Contact() {
           </p>
         </section>
         <form onSubmit={onSubmit} css={form}>
-          <fieldset disabled={false} aria-busy={false}>
+          <fieldset disabled={loading} aria-busy={loading}>
             <label htmlFor='email'>
               Email
               <input

@@ -6,6 +6,8 @@ import Header from '../../src/components/header'
 import Footer from '../../src/components/footer'
 import { getAllPostIds, getPost, post } from '../../src/lib/posts'
 import { main, text } from '../../src/components/styles/styles'
+import { useTheme } from 'emotion-theming'
+import { theme } from '../../src/lib/theme'
 
 const title = css`
   line-height: 1.25;
@@ -19,12 +21,21 @@ const title = css`
 
 export default function Post(props: { postData: post }) {
   const { postData } = props
+  const theme = useTheme<theme>()
+
   return (
     <Layout>
       <Header />
       <main css={main}>
         <article>
-          <h1 css={title}>{postData.title}</h1>
+          <h1
+            css={css`
+              ${title};
+              color: ${theme.body};
+            `}
+          >
+            {postData.title}
+          </h1>
           <div>
             <p css={text}>{postData.body}</p>
           </div>

@@ -1,5 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import { useTheme } from 'emotion-theming'
+import { theme } from '../lib/theme'
 import {
   FaGithub,
   FaTwitter,
@@ -9,7 +11,6 @@ import {
 import config from '../lib/config'
 
 const icon = css`
-  color: #131415;
   font-size: 2em;
   margin-left: 2rem;
   &:hover {
@@ -20,6 +21,7 @@ const icon = css`
 `
 
 export default function Footer() {
+  const theme = useTheme<theme>()
   return (
     <footer
       css={css`
@@ -43,16 +45,40 @@ export default function Footer() {
           align-items: center;
         `}
       >
-        <a href={config.social.github} css={icon}>
+        <a
+          href={config.social.github}
+          css={css`
+            ${icon};
+            color: ${theme.body};
+          `}
+        >
           <FaGithub />
         </a>
-        <a href={config.social.twitter} css={icon}>
+        <a
+          href={config.social.twitter}
+          css={css`
+            ${icon};
+            color: ${theme.body};
+          `}
+        >
           <FaStackOverflow />
         </a>
-        <a href={config.social.twitter} css={icon}>
+        <a
+          href={config.social.twitter}
+          css={css`
+            ${icon};
+            color: ${theme.body};
+          `}
+        >
           <FaTwitter />
         </a>
-        <a href={config.social.linkedIn} css={icon}>
+        <a
+          href={config.social.linkedIn}
+          css={css`
+            ${icon};
+            color: ${theme.body};
+          `}
+        >
           <FaLinkedinIn />
         </a>
       </div>

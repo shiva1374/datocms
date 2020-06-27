@@ -1,8 +1,11 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import ActiveLink from './active-link'
+import { useTheme } from '../context/theme-context'
 
 export default function Header() {
+  const [dark, toggle] = useTheme()
+
   return (
     <header>
       <nav
@@ -17,7 +20,7 @@ export default function Header() {
             css={css`
               width: 120px;
               height: 120px;
-              background-color: #30303070;
+              background-color: #303030;
               border-radius: 60px;
               &:hover {
                 cursor: pointer;
@@ -33,14 +36,17 @@ export default function Header() {
         >
           <ActiveLink href='/contact'>contact</ActiveLink>
           <ActiveLink href='/posts'>posts</ActiveLink>
-          <div
+          <button
+            onClick={toggle}
             css={css`
               width: 30px;
               height: 30px;
-              background-color: #30303070;
+              background-color: #303030;
               border-radius: 15px;
             `}
-          />
+          >
+            {dark ? 'L' : 'N'}
+          </button>
         </div>
       </nav>
     </header>
