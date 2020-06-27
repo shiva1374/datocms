@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import { useTheme } from 'emotion-theming'
-import { theme } from '../lib/theme'
+import { Theme } from '../lib/types'
 import {
   FaGithub,
   FaTwitter,
@@ -20,8 +20,8 @@ const icon = css`
   }
 `
 
-export default function Footer() {
-  const theme = useTheme<theme>()
+const Footer: React.FC = () => {
+  const theme = useTheme<Theme>()
   return (
     <footer
       css={css`
@@ -85,3 +85,5 @@ export default function Footer() {
     </footer>
   )
 }
+
+export default Footer

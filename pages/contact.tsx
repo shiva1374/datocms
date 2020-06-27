@@ -3,11 +3,10 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import Footer from '../src/components/footer'
 import { main, text, form, hand } from '../src/components/styles/styles'
+import { ContactForm } from '../src/lib/types'
 
-type formData = { email: string; name: string; message: string }
-
-export default function Contact() {
-  const [formData, setFormData] = React.useState<formData>({
+const Contact: React.FC = () => {
+  const [formData, setFormData] = React.useState<ContactForm>({
     email: '',
     name: '',
     message: '',
@@ -79,3 +78,5 @@ export default function Contact() {
     </>
   )
 }
+
+export default Contact

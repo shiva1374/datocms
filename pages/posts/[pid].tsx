@@ -2,10 +2,9 @@
 import { jsx, css } from '@emotion/core'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Footer from '../../src/components/footer'
-import { getAllPostIds, getPost, post } from '../../src/lib/posts'
+import { getAllPostIds, getPost } from '../../src/lib/posts'
+import { Post as PostType } from '../../src/lib/types'
 import { main, text } from '../../src/components/styles/styles'
-import { useTheme } from 'emotion-theming'
-import { Theme } from '../../src/lib/theme'
 
 const title = css`
   line-height: 1.25;
@@ -16,10 +15,8 @@ const title = css`
   text-align: center;
 `
 
-export default function Post(props: { postData: post }) {
+const Post: React.FC<{ postData: PostType }> = (props) => {
   const { postData } = props
-  const theme = useTheme<Theme>()
-
   return (
     <>
       <main css={main}>
@@ -52,3 +49,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   }
 }
+
+export default Post

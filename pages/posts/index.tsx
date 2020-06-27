@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import Link from 'next/link'
+import { GetServerSideProps } from 'next'
 import Footer from '../../src/components/footer'
 import Date from '../../src/components/date'
 import { main, text } from '../../src/components/styles/styles'
-import { useTheme } from 'emotion-theming'
-import { Theme } from '../../src/lib/theme'
+import { Post } from '../../src/lib/types'
 
 const list = css`
   list-style: none;
@@ -22,25 +22,18 @@ const titleStyled = css`
   margin-bottom: 0.75rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: #131415;
   &:hover {
     cursor: pointer;
     color: #f628a0;
   }
 `
 
-export default function Blog({ posts }) {
-  const theme = useTheme<Theme>()
+const Blog: React.FC<{ posts: Post[] }> = ({ posts }) => {
   const renderPosts = () =>
     posts.map(({ id, title, body }) => (
       <li css={listElement} key={id.toString()}>
         <Link href='/posts/[pid]' as={`/posts/${id}`}>
-          <a
-            css={css`
-              ${titleStyled};
-              color: ${theme.body};
-            `}
-          >
+          <a css={titleStyled}>
             <h2>{title}</h2>
           </a>
         </Link>
@@ -63,8 +56,10 @@ export default function Blog({ posts }) {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts')
-  const posts = await res.json()
+  const posts: Post[] = await res.json()
   return { props: { posts } }
 }
+
+export default Blog

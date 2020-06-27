@@ -4,7 +4,7 @@ import React from 'react'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import { useTheme } from 'emotion-theming'
-import { Theme } from '../lib/theme'
+import { Theme } from '../lib/types'
 import Header from './header'
 import Meta from './meta'
 
@@ -12,7 +12,7 @@ Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 
-export default function Page({ children }: { children: React.ReactNode }) {
+const Page: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const theme = useTheme<Theme>()
   return (
     <div
@@ -42,3 +42,5 @@ export default function Page({ children }: { children: React.ReactNode }) {
     </div>
   )
 }
+
+export default Page

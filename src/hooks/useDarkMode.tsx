@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function useDarkMode(): [
+const useDarkMode = (): [
   { dark: boolean; hasThemeLoaded: boolean },
   React.Dispatch<
     React.SetStateAction<{
@@ -8,7 +8,7 @@ export default function useDarkMode(): [
       hasThemeLoaded: boolean
     }>
   >
-] {
+] => {
   const [themeState, setThemeState] = React.useState({
     dark: false,
     hasThemeLoaded: false,
@@ -19,3 +19,5 @@ export default function useDarkMode(): [
   }, [])
   return [themeState, setThemeState]
 }
+
+export default useDarkMode

@@ -3,9 +3,8 @@ import { css, jsx } from '@emotion/core'
 import ActiveLink from './active-link'
 import { useTheme } from '../context/theme-context'
 
-export default function Header() {
+const Header: React.FC = () => {
   const [dark, toggle] = useTheme()
-
   return (
     <header>
       <nav
@@ -52,3 +51,5 @@ export default function Header() {
     </header>
   )
 }
+
+export default Header

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import config from '../lib/config'
 
-export default function Meta() {
+const Meta: React.FC = () => {
   return (
     <Head>
       <meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -11,3 +11,5 @@ export default function Meta() {
     </Head>
   )
 }
+
+export default Meta

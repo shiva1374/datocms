@@ -1,9 +1,4 @@
-export type Theme = {
-  background: string
-  body: string
-  primary: string
-  white: string
-}
+import { Theme } from './types'
 
 const white = '#ffffff'
 const pink = '#f628a0'

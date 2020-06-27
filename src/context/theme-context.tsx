@@ -8,11 +8,11 @@ const defaultContextData: [boolean, () => void] = [false, () => {}]
 const ThemeContext = React.createContext(defaultContextData)
 ThemeContext.displayName = 'ThemeContext'
 
-export function useTheme() {
-  return React.useContext(ThemeContext)
-}
+export const useTheme = () => React.useContext(ThemeContext)
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
+export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [themeState, setThemeState] = useDarkMode()
   if (!themeState.hasThemeLoaded) {
     return <div />

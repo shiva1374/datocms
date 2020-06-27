@@ -5,7 +5,7 @@ import { ThemeProvider } from '../src/context/theme-context'
 import { globalStyles } from '../src/components/styles/styles'
 import Page from '../src/components/page'
 
-export default function App({ Component, pageProps }: AppProps) {
+const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <ThemeProvider>
       <CacheProvider value={cache}>
@@ -17,3 +17,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </ThemeProvider>
   )
 }
+
+export default App

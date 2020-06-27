@@ -15,12 +15,10 @@ const a = (activeLink?: boolean) => css`
   }
 `
 
-type props = {
+const ActiveLink: React.FC<{
   href: string
   children: React.ReactNode
-}
-
-export default function ActiveLink({ href, children }: props) {
+}> = ({ href, children }) => {
   const { pathname } = useRouter()
   return (
     <Link href={`${href}`}>
@@ -28,3 +26,5 @@ export default function ActiveLink({ href, children }: props) {
     </Link>
   )
 }
+
+export default ActiveLink

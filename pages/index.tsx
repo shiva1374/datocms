@@ -22,14 +22,7 @@ const a = css`
   }
 `
 
-export default function Home() {
-  const renderHobbies = () =>
-    config.hobbies.map((hobby) => (
-      <li key={hobby}>
-        <span>{hobby}</span>
-      </li>
-    ))
-
+const Home: React.FC = () => {
   return (
     <>
       <main css={main}>
@@ -39,17 +32,23 @@ export default function Home() {
             My name is <strong>{config.author}</strong>, {config.description}
           </p>
           <h3>Another cool things that I enjoy</h3>
-          <ul css={ul}>{renderHobbies()}</ul>
+          <ul css={ul}>
+            {config.hobbies.map((hobby) => (
+              <li key={hobby}>
+                <span>{hobby}</span>
+              </li>
+            ))}
+          </ul>
           <p css={text}>
             This site has it a part of the blog with all my thoughts, and my
-            articles of software{' '}
+            articles of software
           </p>
           <p css={text}>
-            If you wanna talk about your{' '}
+            If you wanna talk about your
             <i>
               <small>(open/closed)</small>
-            </i>{' '}
-            projects or business, you can{' '}
+            </i>
+            projects or business, you can
             <Link href='/contact'>
               <a css={a}>contact me!</a>
             </Link>
@@ -57,10 +56,10 @@ export default function Home() {
           <p css={text}>
             <small>
               I did this an open-source project, if you need a site, feel free
-              to take or collaborate it, here it's the{' '}
+              to take or collaborate it, here it's the
               <a href={config.repoUrl} css={a}>
                 code
-              </a>{' '}
+              </a>
               with an explanation of how to do a deploy with your data 💚
             </small>
           </p>
@@ -70,3 +69,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home

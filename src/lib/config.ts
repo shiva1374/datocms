@@ -1,19 +1,6 @@
-type config = {
-  author: string
-  description: string
-  hobbies: string[]
-  siteUrl: string
-  repoUrl: string
-  social: {
-    twitter: string
-    github: string
-    linkedIn: string
-    stackOverflow: string
-    email: string
-  }
-}
+import { Config } from './types'
 
-const config: config = {
+const config: Config = {
   author: 'Pablo Obando',
   description: `I'm mid Software Developer, a simple guy who enjoys programming and good beers 🍺`,
   hobbies: [

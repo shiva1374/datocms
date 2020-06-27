@@ -6,7 +6,7 @@ const text = css`
   color: #f628a0;
 `
 
-export default function Date({ dateString }: { dateString: string }) {
+const Date: React.FC<{ dateString: string }> = ({ dateString }) => {
   const date = parseISO(dateString)
   return (
     <time dateTime={dateString} css={text}>
@@ -14,3 +14,5 @@ export default function Date({ dateString }: { dateString: string }) {
     </time>
   )
 }
+
+export default Date
