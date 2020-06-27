@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import React from 'react'
-import Layout from '../src/components/layout'
-import Header from '../src/components/header'
 import Footer from '../src/components/footer'
 import { main, text, form, hand } from '../src/components/styles/styles'
 
@@ -26,8 +24,7 @@ export default function Contact() {
   }
 
   return (
-    <Layout>
-      <Header />
+    <>
       <main css={main}>
         <section>
           <h1>
@@ -79,6 +76,6 @@ export default function Contact() {
         </form>
       </main>
       <Footer />
-    </Layout>
+    </>
   )
 }

@@ -1,32 +1,21 @@
 import { css, Global, keyframes } from '@emotion/core'
-import { useTheme } from 'emotion-theming'
-import { theme } from '../../lib/theme'
 
-export function GlobalStyles() {
-  const theme = useTheme<theme>()
-  return (
-    <Global
-      styles={css`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-            Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-          color: ${theme.body};
-          background-color: ${theme.background};
-        }
-        * {
-          box-sizing: border-box;
-          &::selection {
-            color: ${theme.white};
-            background-color: ${theme.primary};
-          }
-        }
-      `}
-    />
-  )
-}
+export const globalStyles = (
+  <Global
+    styles={css`
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+    `}
+  />
+)
 
 export const text = css`
   line-height: 1.7;

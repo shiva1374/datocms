@@ -1,4 +1,4 @@
-export type theme = {
+export type Theme = {
   background: string
   body: string
   primary: string
@@ -22,5 +22,5 @@ const themeDark = {
   white: white,
 }
 
-export default (mode: string): theme =>
+export default (mode: string): Theme =>
   mode === 'dark' ? themeDark : themeLight

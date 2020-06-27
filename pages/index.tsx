@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import Link from 'next/link'
-import Layout from '../src/components/layout'
-import Header from '../src/components/header'
 import Footer from '../src/components/footer'
 import config from '../src/lib/config'
 import { text, main } from '../src/components/styles/styles'
@@ -33,8 +31,7 @@ export default function Home() {
     ))
 
   return (
-    <Layout>
-      <Header />
+    <>
       <main css={main}>
         <section>
           <h2 css={text}>Hey ✌️</h2>
@@ -70,6 +67,6 @@ export default function Home() {
         </section>
       </main>
       <Footer />
-    </Layout>
+    </>
   )
 }

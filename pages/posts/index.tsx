@@ -1,13 +1,11 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import Link from 'next/link'
-import Layout from '../../src/components/layout'
-import Header from '../../src/components/header'
 import Footer from '../../src/components/footer'
 import Date from '../../src/components/date'
 import { main, text } from '../../src/components/styles/styles'
 import { useTheme } from 'emotion-theming'
-import { theme } from '../../src/lib/theme'
+import { Theme } from '../../src/lib/theme'
 
 const list = css`
   list-style: none;
@@ -32,7 +30,7 @@ const titleStyled = css`
 `
 
 export default function Blog({ posts }) {
-  const theme = useTheme<theme>()
+  const theme = useTheme<Theme>()
   const renderPosts = () =>
     posts.map(({ id, title, body }) => (
       <li css={listElement} key={id.toString()}>
@@ -54,15 +52,14 @@ export default function Blog({ posts }) {
     ))
 
   return (
-    <Layout>
-      <Header />
+    <>
       <main css={main}>
         <section>
           <ul css={list}>{renderPosts()}</ul>
         </section>
       </main>
       <Footer />
-    </Layout>
+    </>
   )
 }
 
