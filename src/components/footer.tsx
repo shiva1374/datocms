@@ -9,10 +9,20 @@ const container = css`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 0 1rem;
 `
 
 const hashtag = css`
   font-weight: bold;
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+  }
+`
+
+const containerIcons = css`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `
 
 const iconStyle = (theme: Theme) => css`
@@ -24,6 +34,10 @@ const iconStyle = (theme: Theme) => css`
     transform: scale(1.3);
     cursor: pointer;
   }
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-left: 1rem;
+  }
 `
 
 const Footer: React.FC = () => {
@@ -31,13 +45,7 @@ const Footer: React.FC = () => {
   return (
     <footer css={container}>
       <p css={hashtag}>#blacklivesmatter ✊🏾</p>
-      <div
-        css={css`
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-        `}
-      >
+      <div css={containerIcons}>
         {config.social.map(({ url, icon }) => (
           <a key={url} href={url} css={iconStyle(theme)} target='_blank'>
             {icon}

@@ -13,6 +13,9 @@ const title = css`
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
+  @media (max-width: 768px) {
+    font-size: 1.1em;
+  }
 `
 
 const Post: React.FC<{ postData: PostType }> = (props) => {

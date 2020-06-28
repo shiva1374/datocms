@@ -38,10 +38,6 @@ const config: Config = {
       url: '​https://stackoverflow.com/story/pabloobandodev',
       icon: <FaStackOverflow />,
     },
-    {
-      url: 'mailto:josepabloobandogonzalez@gmail.com',
-      icon: <FaEnvelope />,
-    },
   ],
 }
 

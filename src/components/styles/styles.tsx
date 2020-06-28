@@ -20,12 +20,12 @@ export const globalStyles = (
 export const text = css`
   line-height: 1.7;
   letter-spacing: 1.2;
-  font-size: 1.2em;
+  font-size: 1.1em;
 `
 
 export const main = css`
   flex-grow: 1;
-  padding: 3.5rem 1rem;
+  padding: 3.5rem 2rem;
 `
 
 const loading = keyframes`
@@ -62,7 +62,6 @@ export const form = css`
   button,
   input[type='submit'] {
     cursor: pointer;
-    align-self: flex-end;
     width: auto;
     background: #f628a0;
     color: white;
@@ -98,17 +97,24 @@ export const form = css`
     }
   }
   & .containerSubmit {
-    justify-content: flex-end;
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
+    justify-content: space-around;
     align-items: center;
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
   }
 `
 
 export const hand = css`
   width: 14rem;
   height: 2.5rem;
-  background-color: #30303070;
-  margin-right: 2rem;
+  background-color: #303030;
+  @media (max-width: 768px) {
+    width: 2rem;
+    height: 8rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+  }
 `

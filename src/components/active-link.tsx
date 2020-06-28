@@ -6,7 +6,6 @@ import Link from 'next/link'
 const a = (activeLink?: boolean) => css`
   margin-right: 1rem;
   text-transform: uppercase;
-  font-size: 16px;
   text-decoration: none;
   color: ${activeLink && '#f628a0'};
   &:hover {
