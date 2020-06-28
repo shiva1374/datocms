@@ -46,8 +46,15 @@ const Footer: React.FC = () => {
     <footer css={container}>
       <p css={hashtag}>#blacklivesmatter ✊🏾</p>
       <div css={containerIcons}>
-        {config.social.map(({ url, icon }) => (
-          <a key={url} href={url} css={iconStyle(theme)} target='_blank'>
+        {config.social.map(({ name, url, icon }) => (
+          <a
+            key={url}
+            href={url}
+            css={iconStyle(theme)}
+            target='_blank'
+            aria-label={name}
+            rel='noopener'
+          >
             {icon}
           </a>
         ))}

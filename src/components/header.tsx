@@ -1,28 +1,27 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import { FaLightbulb } from 'react-icons/fa'
 import ActiveLink from './active-link'
 import { useTheme } from 'context/theme-context'
+import config from 'lib/config'
 
 const logo = css`
-  width: 7rem;
-  height: 7rem;
-  border-radius: 4.5rem;
-  background-color: #303030;
+  width: 8rem;
+  height: 8rem;
   &:hover {
     cursor: pointer;
   }
   @media (max-width: 768px) {
-    width: 5rem;
-    height: 5rem;
-    border-radius: 2.5rem;
+    width: 6rem;
+    height: 6rem;
   }
 `
 
 const themeMode = css`
   width: 2rem;
   height: 2rem;
-  background-color: #303030;
   border-radius: 1rem;
+  text-align: center;
   @media (max-width: 768px) {
     width: 1.5rem;
     height: 1.5rem;
@@ -42,17 +41,19 @@ const options = css`
 `
 
 const Header: React.FC = () => {
-  const [dark, toggle] = useTheme()
+  const [, toggle] = useTheme()
   return (
     <header>
       <nav css={container}>
         <ActiveLink href='/'>
-          <div css={logo} />
+          <img src='/images/profile.png' css={logo} alt={config.author} />
         </ActiveLink>
         <div css={options}>
           <ActiveLink href='/contact'>contact</ActiveLink>
           <ActiveLink href='/posts'>posts</ActiveLink>
-          <button onClick={toggle} css={themeMode} />
+          <button onClick={toggle} css={themeMode} aria-label='Switch mode'>
+            <FaLightbulb />
+          </button>
         </div>
       </nav>
     </header>

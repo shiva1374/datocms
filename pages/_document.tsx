@@ -21,12 +21,13 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <html>
+      <html lang='en'>
         <Head />
         <body>
           <Main />
           <NextScript />
         </body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
       </html>
     )
   }

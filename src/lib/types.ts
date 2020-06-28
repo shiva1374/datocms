@@ -5,6 +5,7 @@ export type Config = {
   siteUrl: string
   repoUrl: string
   social: {
+    name: string
     url: string
     icon: React.ReactNode
   }[]

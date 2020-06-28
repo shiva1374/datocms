@@ -19,6 +19,9 @@ const container = (theme: Theme) => css`
     color: ${theme.white};
     background-color: ${theme.primary};
   }
+  span {
+    color: ${theme.primary};
+  }
 `
 const innerContainer = css`
   max-width: 50rem;

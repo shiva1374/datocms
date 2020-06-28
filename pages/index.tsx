@@ -8,14 +8,10 @@ import { text, main } from 'components/styles/styles'
 const list = css`
   ${text};
   padding: 0 1rem 2rem;
-  & > li > span {
-    color: #f628a0;
-  }
 `
 
 const link = css`
   ${text};
-  color: #f628a0;
   text-decoration: none;
   &:hover {
     cursor: pointer;
@@ -50,7 +46,9 @@ const Home: React.FC = () => {
             </i>{' '}
             projects or business, you can{' '}
             <Link href='/contact'>
-              <a css={link}>contact me!</a>
+              <a css={link}>
+                <span>contact me!</span>
+              </a>
             </Link>
           </p>
           <p css={text}>
@@ -59,7 +57,7 @@ const Home: React.FC = () => {
               to take or collaborate it, here it's the{' '}
               <a href={config.repoUrl} css={link}>
                 {' '}
-                code
+                <span>code</span>
               </a>{' '}
               with an explanation of how to do a deploy with your data 💚
             </small>

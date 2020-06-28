@@ -1,20 +1,19 @@
 import { Theme } from './types'
 
 const white = '#ffffff'
-const pink = '#f628a0'
 const black = '#131415'
 const mirage = '#151f2b'
 
 const themeLight = {
   background: white,
   body: black,
-  primary: pink,
+  primary: '#a2005f',
   white: white,
 }
 const themeDark = {
   background: mirage,
   body: white,
-  primary: pink,
+  primary: '#ff85cc',
   white: white,
 }
 
