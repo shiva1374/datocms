@@ -12,30 +12,29 @@ Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 
+const container = (theme: Theme) => css`
+  color: ${theme.body};
+  background-color: ${theme.background};
+  *::selection {
+    color: ${theme.white};
+    background-color: ${theme.primary};
+  }
+`
+const innerContainer = css`
+  max-width: 50rem;
+  padding: 2rem 0;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+`
+
 const Page: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const theme = useTheme<Theme>()
   return (
-    <div
-      css={css`
-        color: ${theme.body};
-        background-color: ${theme.background};
-        *::selection {
-          color: ${theme.white};
-          background-color: ${theme.primary};
-        }
-      `}
-    >
+    <div css={container(theme)}>
       <Meta />
-      <div
-        css={css`
-          max-width: 50rem;
-          padding: 2rem 0;
-          min-height: 100vh;
-          margin: 0 auto;
-          display: flex;
-          flex-direction: column;
-        `}
-      >
+      <div css={innerContainer}>
         <Header />
         {children}
       </div>

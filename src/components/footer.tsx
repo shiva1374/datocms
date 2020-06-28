@@ -10,7 +10,12 @@ import {
 } from 'react-icons/fa'
 import config from '../lib/config'
 
-const icon = css`
+const hashtag = css`
+  font-weight: bold;
+`
+
+const icon = (theme: Theme) => css`
+  color: ${theme.body};
   font-size: 2em;
   margin-left: 2rem;
   &:hover {
@@ -31,13 +36,7 @@ const Footer: React.FC = () => {
         align-items: center;
       `}
     >
-      <p
-        css={css`
-          font-weight: bold;
-        `}
-      >
-        #blacklivesmatter ✊🏾
-      </p>
+      <p css={hashtag}>#blacklivesmatter ✊🏾</p>
       <div
         css={css`
           display: flex;
@@ -45,40 +44,16 @@ const Footer: React.FC = () => {
           align-items: center;
         `}
       >
-        <a
-          href={config.social.github}
-          css={css`
-            ${icon};
-            color: ${theme.body};
-          `}
-        >
+        <a href={config.social.github} css={icon(theme)}>
           <FaGithub />
         </a>
-        <a
-          href={config.social.twitter}
-          css={css`
-            ${icon};
-            color: ${theme.body};
-          `}
-        >
+        <a href={config.social.twitter} css={icon(theme)}>
           <FaStackOverflow />
         </a>
-        <a
-          href={config.social.twitter}
-          css={css`
-            ${icon};
-            color: ${theme.body};
-          `}
-        >
+        <a href={config.social.twitter} css={icon(theme)}>
           <FaTwitter />
         </a>
-        <a
-          href={config.social.linkedIn}
-          css={css`
-            ${icon};
-            color: ${theme.body};
-          `}
-        >
+        <a href={config.social.linkedIn} css={icon(theme)}>
           <FaLinkedinIn />
         </a>
       </div>

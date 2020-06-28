@@ -17,7 +17,7 @@ const listElement = css`
   margin: 0 0 4rem;
 `
 
-const titleStyled = css`
+const titleElement = css`
   line-height: 1.25;
   margin-bottom: 0.75rem;
   text-transform: uppercase;
@@ -33,7 +33,7 @@ const Blog: React.FC<{ posts: Post[] }> = ({ posts }) => {
     posts.map(({ id, title, body }) => (
       <li css={listElement} key={id.toString()}>
         <Link href='/posts/[pid]' as={`/posts/${id}`}>
-          <a css={titleStyled}>
+          <a css={titleElement}>
             <h2>{title}</h2>
           </a>
         </Link>
