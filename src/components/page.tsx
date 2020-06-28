@@ -4,9 +4,9 @@ import React from 'react'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import { useTheme } from 'emotion-theming'
-import { Theme } from '../lib/types'
-import Header from './header'
-import Meta from './meta'
+import { Theme } from 'lib/types'
+import Header from 'components/header'
+import Meta from 'components/meta'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())

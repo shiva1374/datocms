@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import Link from 'next/link'
-import Footer from '../src/components/footer'
-import config from '../src/lib/config'
-import { text, main } from '../src/components/styles/styles'
+import Footer from 'components/footer'
+import config from 'lib/config'
+import { text, main } from 'components/styles/styles'
 
 const list = css`
   ${text};
@@ -44,11 +44,11 @@ const Home: React.FC = () => {
             articles of software
           </p>
           <p css={text}>
-            If you wanna talk about your
+            If you wanna talk about your{' '}
             <i>
               <small>(open/closed)</small>
-            </i>
-            projects or business, you can
+            </i>{' '}
+            projects or business, you can{' '}
             <Link href='/contact'>
               <a css={link}>contact me!</a>
             </Link>
@@ -56,10 +56,11 @@ const Home: React.FC = () => {
           <p css={text}>
             <small>
               I did this an open-source project, if you need a site, feel free
-              to take or collaborate it, here it's the
+              to take or collaborate it, here it's the{' '}
               <a href={config.repoUrl} css={link}>
+                {' '}
                 code
-              </a>
+              </a>{' '}
               with an explanation of how to do a deploy with your data 💚
             </small>
           </p>

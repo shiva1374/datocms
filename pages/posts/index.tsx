@@ -2,10 +2,10 @@
 import { jsx, css } from '@emotion/core'
 import Link from 'next/link'
 import { GetServerSideProps } from 'next'
-import Footer from '../../src/components/footer'
-import Date from '../../src/components/date'
-import { main, text } from '../../src/components/styles/styles'
-import { Post } from '../../src/lib/types'
+import Footer from 'components/footer'
+import Date from 'components/date'
+import { main, text } from 'components/styles/styles'
+import { Post } from 'lib/types'
 
 const list = css`
   list-style: none;

@@ -1,20 +1,21 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import { useTheme } from 'emotion-theming'
-import { Theme } from '../lib/types'
-import {
-  FaGithub,
-  FaTwitter,
-  FaLinkedinIn,
-  FaStackOverflow,
-} from 'react-icons/fa'
-import config from '../lib/config'
+import { Theme } from 'lib/types'
+import config from 'lib/config'
+
+const container = css`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`
 
 const hashtag = css`
   font-weight: bold;
 `
 
-const icon = (theme: Theme) => css`
+const iconStyle = (theme: Theme) => css`
   color: ${theme.body};
   font-size: 2em;
   margin-left: 2rem;
@@ -28,14 +29,7 @@ const icon = (theme: Theme) => css`
 const Footer: React.FC = () => {
   const theme = useTheme<Theme>()
   return (
-    <footer
-      css={css`
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      `}
-    >
+    <footer css={container}>
       <p css={hashtag}>#blacklivesmatter ✊🏾</p>
       <div
         css={css`
@@ -44,18 +38,11 @@ const Footer: React.FC = () => {
           align-items: center;
         `}
       >
-        <a href={config.social.github} css={icon(theme)}>
-          <FaGithub />
-        </a>
-        <a href={config.social.twitter} css={icon(theme)}>
-          <FaStackOverflow />
-        </a>
-        <a href={config.social.twitter} css={icon(theme)}>
-          <FaTwitter />
-        </a>
-        <a href={config.social.linkedIn} css={icon(theme)}>
-          <FaLinkedinIn />
-        </a>
+        {config.social.map(({ url, icon }) => (
+          <a key={url} href={url} css={iconStyle(theme)} target='_blank'>
+            {icon}
+          </a>
+        ))}
       </div>
     </footer>
   )

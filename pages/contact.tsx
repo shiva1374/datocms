@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import React from 'react'
-import Footer from '../src/components/footer'
-import { main, text, form, hand } from '../src/components/styles/styles'
-import { ContactForm } from '../src/lib/types'
+import Footer from 'components/footer'
+import { main, text, form, hand } from 'components/styles/styles'
+import { ContactForm } from 'lib/types'
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = React.useState<ContactForm>({

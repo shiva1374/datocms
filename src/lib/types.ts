@@ -5,12 +5,9 @@ export type Config = {
   siteUrl: string
   repoUrl: string
   social: {
-    twitter: string
-    github: string
-    linkedIn: string
-    stackOverflow: string
-    email: string
-  }
+    url: string
+    icon: React.ReactNode
+  }[]
 }
 
 export type Post = {

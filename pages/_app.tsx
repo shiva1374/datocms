@@ -1,9 +1,9 @@
 import { AppProps } from 'next/app'
 import { CacheProvider } from '@emotion/core'
 import { cache } from 'emotion'
-import { ThemeProvider } from '../src/context/theme-context'
-import { globalStyles } from '../src/components/styles/styles'
-import Page from '../src/components/page'
+import { ThemeProvider } from 'context/theme-context'
+import { globalStyles } from 'components/styles/styles'
+import Page from 'components/page'
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (

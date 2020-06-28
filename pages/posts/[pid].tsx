@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import Footer from '../../src/components/footer'
-import { getAllPostIds, getPost } from '../../src/lib/posts'
-import { Post as PostType } from '../../src/lib/types'
-import { main, text } from '../../src/components/styles/styles'
+import Footer from 'components/footer'
+import { getAllPostIds, getPost } from 'lib/posts'
+import { Post as PostType } from 'lib/types'
+import { main, text } from 'components/styles/styles'
 
 const title = css`
   line-height: 1.25;

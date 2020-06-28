@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import ActiveLink from './active-link'
-import { useTheme } from '../context/theme-context'
+import { useTheme } from 'context/theme-context'
 
 const logo = css`
   width: 120px;
