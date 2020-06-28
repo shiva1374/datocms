@@ -18,27 +18,27 @@ const config: Config = {
     '🍻 More beers with good friends',
     '💻 More programming',
   ],
-  siteUrl: 'https://pabloobando.dev',
+  siteUrl: 'https://www.pabloobando.dev',
   repoUrl: '',
   social: [
     {
-      name: 'facebook',
+      name: 'twitter',
       url: 'https://www.twitter.com/pabloobandodev/',
       icon: <FaTwitter />,
     },
     {
       name: 'github',
-      url: '​https://www.github.com/pabloobandodev',
+      url: 'https://www.github.com/pabloobandodev',
       icon: <FaGithub />,
     },
     {
       name: 'linkedin',
-      url: '​https://www.linkedin.com/in/pabloobandodev',
+      url: 'https://www.linkedin.com/in/pabloobandodev',
       icon: <FaLinkedinIn />,
     },
     {
       name: 'stackoverflow',
-      url: '​https://stackoverflow.com/story/pabloobandodev',
+      url: 'https://stackoverflow.com/story/pabloobandodev',
       icon: <FaStackOverflow />,
     },
   ],

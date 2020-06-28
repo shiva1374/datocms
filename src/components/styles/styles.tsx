@@ -101,20 +101,5 @@ export const form = css`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    @media (max-width: 768px) {
-      flex-direction: column;
-    }
-  }
-`
-
-export const hand = css`
-  width: 14rem;
-  height: 2.5rem;
-  background-color: #303030;
-  @media (max-width: 768px) {
-    width: 2rem;
-    height: 8rem;
-    margin-bottom: 2rem;
-    margin-top: 1rem;
   }
 `

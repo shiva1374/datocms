@@ -1,16 +1,18 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import { useRouter } from 'next/router'
+import { useTheme } from 'emotion-theming'
+import { Theme } from 'lib/types'
 import Link from 'next/link'
 
-const a = (activeLink?: boolean) => css`
+const a = (active: boolean, theme: Theme) => css`
   margin-right: 1rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: ${activeLink && '#f628a0'};
+  color: ${active ? theme.primary : theme.body};
   &:hover {
     cursor: pointer;
-    color: #f628a0;
+    color: ${theme.primary};
   }
 `
 
@@ -19,9 +21,11 @@ const ActiveLink: React.FC<{
   children: React.ReactNode
 }> = ({ href, children }) => {
   const { pathname } = useRouter()
+  const theme = useTheme<Theme>()
+
   return (
     <Link href={`${href}`}>
-      <a css={a(pathname.includes(href))}>{children}</a>
+      <a css={a(pathname.includes(href), theme)}>{children}</a>
     </Link>
   )
 }

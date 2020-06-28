@@ -2,31 +2,29 @@
 import { css, jsx } from '@emotion/core'
 import { FaLightbulb } from 'react-icons/fa'
 import ActiveLink from './active-link'
-import { useTheme } from 'context/theme-context'
+import { useThemeMode } from 'context/theme-context'
 import config from 'lib/config'
+import { useTheme } from 'emotion-theming'
+import { Theme } from 'lib/types'
 
 const logo = css`
-  width: 8rem;
-  height: 8rem;
+  width: 7rem;
+  height: 7rem;
   &:hover {
     cursor: pointer;
   }
   @media (max-width: 768px) {
-    width: 6rem;
-    height: 6rem;
+    width: 5rem;
+    height: 5rem;
   }
 `
 
-const themeMode = css`
-  width: 2rem;
-  height: 2rem;
-  border-radius: 1rem;
+const themeIcon = (theme: Theme) => css`
+  background-color: transparent;
+  font-size: 1.1rem;
+  border: none;
   text-align: center;
-  @media (max-width: 768px) {
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 0.75rem;
-  }
+  color: ${theme.contrast};
 `
 
 const container = css`
@@ -41,7 +39,8 @@ const options = css`
 `
 
 const Header: React.FC = () => {
-  const [, toggle] = useTheme()
+  const [, toggle] = useThemeMode()
+  const theme = useTheme<Theme>()
   return (
     <header>
       <nav css={container}>
@@ -51,7 +50,11 @@ const Header: React.FC = () => {
         <div css={options}>
           <ActiveLink href='/contact'>contact</ActiveLink>
           <ActiveLink href='/posts'>posts</ActiveLink>
-          <button onClick={toggle} css={themeMode} aria-label='Switch mode'>
+          <button
+            onClick={toggle}
+            css={themeIcon(theme)}
+            aria-label='Switch mode'
+          >
             <FaLightbulb />
           </button>
         </div>

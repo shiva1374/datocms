@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import React from 'react'
+import { FaRegHandPointRight } from 'react-icons/fa'
 import Footer from 'components/footer'
-import { main, text, form, hand } from 'components/styles/styles'
+import { main, text, form } from 'components/styles/styles'
 import { ContactForm } from 'lib/types'
 
 const Contact: React.FC = () => {
@@ -68,7 +69,7 @@ const Contact: React.FC = () => {
               />
             </label>
             <div className='containerSubmit'>
-              <div css={hand} />
+              <FaRegHandPointRight />
               <button type='submit'>Send!</button>
             </div>
           </fieldset>

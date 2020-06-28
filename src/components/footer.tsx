@@ -30,7 +30,7 @@ const iconStyle = (theme: Theme) => css`
   font-size: 2em;
   margin-left: 2rem;
   &:hover {
-    color: #f628a0;
+    color: ${theme.primary};
     transform: scale(1.3);
     cursor: pointer;
   }

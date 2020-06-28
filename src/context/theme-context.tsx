@@ -8,7 +8,7 @@ const defaultContextData: [boolean, () => void] = [false, () => {}]
 const ThemeContext = React.createContext(defaultContextData)
 ThemeContext.displayName = 'ThemeContext'
 
-export const useTheme = () => React.useContext(ThemeContext)
+export const useThemeMode = () => React.useContext(ThemeContext)
 
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
   children,

@@ -25,4 +25,5 @@ export type Theme = {
   body: string
   primary: string
   white: string
+  contrast: string
 }
