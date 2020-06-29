@@ -1,10 +1,10 @@
 import { GraphQLClient } from 'graphql-request'
+import { RequestProps } from './types'
 
-export const request = ({ query, variables, preview }) => {
+export const request = ({ query, variables, preview }: RequestProps) => {
   const endpoint = preview
-    ? `https://graphql.datocms.com/preview`
-    : `https://graphql.datocms.com/`
-
+    ? `${process.env.NEXT_DATOCMS_API_ENDPOINT}/preview`
+    : process.env.NEXT_DATOCMS_API_ENDPOINT
   const client = new GraphQLClient(endpoint, {
     headers: {
       authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,

@@ -1,9 +1,11 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import Footer from 'components/footer'
-import config from 'lib/config'
 import { text, main } from 'components/styles/styles'
+import { request } from 'lib/datocms'
+import { Author } from 'lib/types'
 
 const list = css`
   ${text};
@@ -18,18 +20,39 @@ const link = css`
   }
 `
 
-const Home: React.FC = () => {
+export const AUTHOR_QUERY = `
+  query AUTHOR_QUERY($name: String!) {
+    author(filter: { name: { matches: { pattern: $name } } }) {
+      name
+      description
+      hobbies
+    }
+  }
+`
+export const getStaticProps: GetStaticProps = async (context) => {
+  const data: { author: Author } = await request({
+    query: AUTHOR_QUERY,
+    variables: { name: 'Pablo Obando' },
+  })
+  return {
+    props: {
+      author: data.author,
+    },
+  }
+}
+
+const Home: React.FC<{ author: Author }> = ({ author }) => {
   return (
     <>
       <main css={main}>
         <section>
           <h2 css={text}>Hey ✌️</h2>
           <p css={text}>
-            My name is <strong>{config.author}</strong>, {config.description}
+            My name is <strong>{author.name}</strong>, {author.description}
           </p>
           <h3>Another cool things that I enjoy</h3>
           <ul css={list}>
-            {config.hobbies.map((hobby) => (
+            {author?.hobbies?.values?.map((hobby) => (
               <li key={hobby}>
                 <span>{hobby}</span>
               </li>
@@ -55,7 +78,10 @@ const Home: React.FC = () => {
             <small>
               I did this an open-source project, if you need a site, feel free
               to take or collaborate it, here it's the{' '}
-              <a href={config.repoUrl} css={link}>
+              <a
+                href={'https://github.com/pabloobandodev/personal-website'}
+                css={link}
+              >
                 {' '}
                 <span>code</span>
               </a>{' '}

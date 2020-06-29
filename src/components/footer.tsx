@@ -1,8 +1,13 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import {
+  FaTwitter,
+  FaGithub,
+  FaLinkedinIn,
+  FaStackOverflow,
+} from 'react-icons/fa'
 import { useTheme } from 'emotion-theming'
-import { Theme } from 'lib/types'
-import config from 'lib/config'
+import { Theme, Social } from 'lib/types'
 
 const container = css`
   display: flex;
@@ -40,13 +45,36 @@ const iconStyle = (theme: Theme) => css`
   }
 `
 
+const social: Social = [
+  {
+    name: 'facebook',
+    url: 'https://www.twitter.com/pabloobandodev/',
+    icon: <FaTwitter />,
+  },
+  {
+    name: 'github',
+    url: '​https://www.github.com/pabloobandodev',
+    icon: <FaGithub />,
+  },
+  {
+    name: 'linkedin',
+    url: '​https://www.linkedin.com/in/pabloobandodev',
+    icon: <FaLinkedinIn />,
+  },
+  {
+    name: 'stackoverflow',
+    url: '​https://stackoverflow.com/story/pabloobandodev',
+    icon: <FaStackOverflow />,
+  },
+]
+
 const Footer: React.FC = () => {
   const theme = useTheme<Theme>()
   return (
     <footer css={container}>
       <p css={hashtag}>#blacklivesmatter ✊🏾</p>
       <div css={containerIcons}>
-        {config.social.map(({ name, url, icon }) => (
+        {social.map(({ name, url, icon }) => (
           <a
             key={url}
             href={url}
