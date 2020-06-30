@@ -15,7 +15,6 @@ const loading = keyframes`
   from {
     background-position: 0 0;
   }
-
   to {
     background-position: 100% 100%;
   }
@@ -94,5 +93,32 @@ export const authorImage = css`
   @media (max-width: 768px) {
     width: 5rem;
     height: 5rem;
+  }
+`
+
+const shake = keyframes`
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+`
+
+export const iconGift = css`
+  font-size: 5rem;
+  &:hover {
+    cursor: pointer;
+    animation: ${shake} 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
   }
 `

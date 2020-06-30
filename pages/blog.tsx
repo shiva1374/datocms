@@ -16,8 +16,10 @@ const list = css`
   margin: 0;
 `
 
-const listElement = css`
+const listElement = (theme: Theme) => css`
   margin: 0 0 4rem;
+  border-bottom: 1px solid ${theme.primary};
+  padding-bottom: 2rem;
 `
 
 const titleElement = (theme: Theme) => css`
@@ -39,7 +41,7 @@ const Blog: React.FC<{ allPosts: Post[] }> = ({ allPosts }) => {
         <section>
           <ul css={list}>
             {allPosts?.map(({ title, excerpt, date, slug }) => (
-              <li css={listElement} key={slug}>
+              <li css={listElement(theme)} key={slug}>
                 <Link href='/posts/[slug]' as={`/posts/${slug}`}>
                   <a css={titleElement(theme)}>
                     <h2>{title}</h2>

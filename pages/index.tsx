@@ -2,10 +2,11 @@
 import { css, jsx } from '@emotion/core'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
+import { FaGift } from 'react-icons/fa'
 import Page from 'src/components/page'
 import Footer from 'src/components/footer'
 import { Author } from 'src/lib/types'
-import { text, main } from 'src/styles'
+import { text, main, iconGift } from 'src/styles'
 import { getAuthor } from 'src/lib/datocms'
 
 const list = css`
@@ -19,6 +20,11 @@ const link = css`
   &:hover {
     cursor: pointer;
   }
+`
+
+const containerGift = css`
+  text-align: center;
+  margin-top: 4rem;
 `
 
 const Home: React.FC<{ author: Author }> = ({ author }) => {
@@ -54,22 +60,15 @@ const Home: React.FC<{ author: Author }> = ({ author }) => {
               </a>
             </Link>
           </p>
-          <p css={text}>
-            <small>
-              I did this an open-source project, if you need a site, feel free
-              to take or collaborate it, here it's the{' '}
-              <a
-                href={'https://github.com/pabloobandodev/personal-website'}
-                css={link}
-              >
-                {' '}
-                <span>code</span>
-              </a>{' '}
-              with an explanation of how to do a deploy with your data 💚
-            </small>
-          </p>
         </section>
       </main>
+      <section css={containerGift}>
+        <Link href='/source-code'>
+          <a css={link}>
+            <FaGift css={iconGift} />
+          </a>
+        </Link>
+      </section>
       <Footer />
     </Page>
   )
