@@ -1,28 +1,39 @@
 /** @jsx jsx */
-import { css, jsx } from '@emotion/core'
+import { css, jsx, Global } from '@emotion/core'
 import React from 'react'
 import Router from 'next/router'
 import NProgress from 'nprogress'
+import { Theme } from 'src/lib/types'
 import { useTheme } from 'emotion-theming'
-import { Theme } from 'lib/types'
-import Header from 'components/header'
-import Meta from 'components/meta'
+import Meta from 'src/components/meta'
+import Header from 'src/components/header'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 
-const container = (theme: Theme) => css`
-  color: ${theme.body};
-  background-color: ${theme.background};
+const globalStyles = (theme: Theme) => css`
+  * {
+    box-sizing: border-box;
+  }
   *::selection {
     color: ${theme.white};
     background-color: ${theme.primary};
+  }
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: ${theme.body};
+    background-color: ${theme.background};
   }
   span {
     color: ${theme.primary};
   }
 `
+
 const innerContainer = css`
   max-width: 50rem;
   padding: 2rem 0;
@@ -35,8 +46,9 @@ const innerContainer = css`
 const Page: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const theme = useTheme<Theme>()
   return (
-    <div css={container(theme)}>
+    <div>
       <Meta />
+      <Global styles={globalStyles(theme)} />
       <div css={innerContainer}>
         <Header />
         {children}

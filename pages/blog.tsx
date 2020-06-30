@@ -1,14 +1,13 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
-import Link from 'next/link'
 import { GetStaticProps } from 'next'
-import Footer from 'components/footer'
-import Date from 'components/date'
-import { main, text } from 'components/styles/styles'
-import { Post } from 'lib/types'
+import Link from 'next/link'
 import { useTheme } from 'emotion-theming'
-import { Theme } from 'lib/types'
-import { request } from 'lib/datocms'
+import Footer from 'src/components/footer'
+import Date from 'src/components/date'
+import { main, text } from 'src/styles'
+import { Post, Theme } from 'src/lib/types'
+import { getAllPosts } from 'src/lib/datocms'
 
 const list = css`
   list-style: none;
@@ -30,45 +29,6 @@ const titleElement = (theme: Theme) => css`
     color: ${theme.primary};
   }
 `
-
-export const ALL_POSTS_QUERY = `
-  query ALL_POSTS_QUERY($limit: IntType!) {
-    allPosts(first: $limit) {
-      id
-      title
-      excerpt
-      date
-      slug
-      coverImage {
-        responsiveImage(imgixParams: { fit: crop, w: 300, h: 300, auto: format }) {
-          srcSet
-          webpSrcSet
-          sizes
-          src
-          width
-          height
-          aspectRatio
-          alt
-          title
-          base64
-        }
-      }
-    }
-  }
-`
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const data = await request({
-    query: ALL_POSTS_QUERY,
-    variables: { limit: 10 },
-    preview: context.preview,
-  })
-  return {
-    props: {
-      allPosts: data.allPosts,
-    },
-  }
-}
 
 const Blog: React.FC<{ allPosts: Post[] }> = ({ allPosts }) => {
   const theme = useTheme<Theme>()
@@ -96,6 +56,15 @@ const Blog: React.FC<{ allPosts: Post[] }> = ({ allPosts }) => {
       <Footer />
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const allPosts = await getAllPosts()
+  return {
+    props: {
+      allPosts,
+    },
+  }
 }
 
 export default Blog

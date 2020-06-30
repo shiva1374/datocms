@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTheme } from 'emotion-theming'
-import { Theme } from 'lib/types'
-import Link from 'next/link'
+import { Theme } from 'src/lib/types'
 
 const a = (active: boolean, theme: Theme) => css`
   margin-right: 1rem;
@@ -22,7 +22,6 @@ const ActiveLink: React.FC<{
 }> = ({ href, children }) => {
   const { pathname } = useRouter()
   const theme = useTheme<Theme>()
-
   return (
     <Link href={`${href}`}>
       <a css={a(pathname.includes(href), theme)}>{children}</a>

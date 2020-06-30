@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { parseISO, format } from 'date-fns'
+import { Theme } from 'src/lib/types'
 import { useTheme } from 'emotion-theming'
-import { Theme } from 'lib/types'
 
-const text = (theme) => css`
+const text = (theme: Theme) => css`
   color: ${theme.primary};
 `
 

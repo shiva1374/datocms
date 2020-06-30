@@ -2,10 +2,11 @@
 import { css, jsx } from '@emotion/core'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
-import Footer from 'components/footer'
-import { text, main } from 'components/styles/styles'
-import { request } from 'lib/datocms'
-import { Author } from 'lib/types'
+import Page from 'src/components/page'
+import Footer from 'src/components/footer'
+import { Author } from 'src/lib/types'
+import { text, main } from 'src/styles'
+import { getAuthor } from 'src/lib/datocms'
 
 const list = css`
   ${text};
@@ -20,30 +21,9 @@ const link = css`
   }
 `
 
-export const AUTHOR_QUERY = `
-  query AUTHOR_QUERY($name: String!) {
-    author(filter: { name: { matches: { pattern: $name } } }) {
-      name
-      description
-      hobbies
-    }
-  }
-`
-export const getStaticProps: GetStaticProps = async (context) => {
-  const data: { author: Author } = await request({
-    query: AUTHOR_QUERY,
-    variables: { name: 'Pablo Obando' },
-  })
-  return {
-    props: {
-      author: data.author,
-    },
-  }
-}
-
 const Home: React.FC<{ author: Author }> = ({ author }) => {
   return (
-    <>
+    <Page>
       <main css={main}>
         <section>
           <h2 css={text}>Hey ✌️</h2>
@@ -91,8 +71,17 @@ const Home: React.FC<{ author: Author }> = ({ author }) => {
         </section>
       </main>
       <Footer />
-    </>
+    </Page>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const author = await getAuthor()
+  return {
+    props: {
+      author,
+    },
+  }
 }
 
 export default Home

@@ -1,21 +1,4 @@
-import { css, Global, keyframes } from '@emotion/core'
-
-export const globalStyles = (
-  <Global
-    styles={css`
-      html,
-      body {
-        padding: 0;
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-          Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      }
-      * {
-        box-sizing: border-box;
-      }
-    `}
-  />
-)
+import { css, keyframes } from '@emotion/core'
 
 export const text = css`
   line-height: 1.7;

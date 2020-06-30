@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useTheme } from 'emotion-theming'
-import { Theme } from 'lib/types'
+import { Theme } from 'src/lib/types'
 
 const Meta: React.FC = () => {
   const theme = useTheme<Theme>()

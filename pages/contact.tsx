@@ -2,9 +2,9 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import { FaRegHandPointRight } from 'react-icons/fa'
-import Footer from 'components/footer'
-import { main, text, form } from 'components/styles/styles'
-import { ContactForm } from 'lib/types'
+import Footer from 'src/components/footer'
+import { ContactForm } from 'src/lib/types'
+import { main, text, form } from 'src/styles'
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = React.useState<ContactForm>({
@@ -12,6 +12,7 @@ const Contact: React.FC = () => {
     name: '',
     message: '',
   })
+
   const [loading, setLoading] = React.useState(false)
 
   const saveToFormData = (e) =>

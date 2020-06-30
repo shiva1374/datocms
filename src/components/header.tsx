@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import { FaLightbulb } from 'react-icons/fa'
-import ActiveLink from './active-link'
-import { useThemeMode } from 'context/theme-context'
+import { useThemeMode } from 'src/context/theme-context'
 import { useTheme } from 'emotion-theming'
-import { Theme } from 'lib/types'
+import { Theme } from 'src/lib/types'
+import ActiveLink from 'src/components/active-link'
 
 const logo = css`
   width: 7rem;

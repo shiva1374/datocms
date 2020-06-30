@@ -1,4 +1,4 @@
-import { Theme } from './types'
+import { Theme } from 'src/lib/types'
 
 const white = '#ffffff'
 const black = '#131415'
@@ -11,7 +11,6 @@ const themeLight = {
   white: white,
   contrast: mirage,
 }
-
 const themeDark = {
   background: mirage,
   body: white,

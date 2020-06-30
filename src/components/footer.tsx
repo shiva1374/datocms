@@ -7,7 +7,7 @@ import {
   FaStackOverflow,
 } from 'react-icons/fa'
 import { useTheme } from 'emotion-theming'
-import { Theme, Social } from 'lib/types'
+import { Theme, Social } from 'src/lib/types'
 
 const container = css`
   display: flex;
@@ -53,7 +53,7 @@ const social: Social = [
   },
   {
     name: 'github',
-    url: '​https://www.github.com/pabloobandodev',
+    url: 'https://github.com/pabloobandodev',
     icon: <FaGithub />,
   },
   {
