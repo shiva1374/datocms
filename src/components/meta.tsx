@@ -12,7 +12,6 @@ const Meta: React.FC = () => {
       <meta name='description' content='Personal website' />
       <link rel='stylesheet' type='text/css' href='/nprogress.css' />
       <meta name='keywords' content='Keywords' />
-      <link rel='manifest' href='/manifest.json' />
       <meta name='theme-color' content={theme.background} />
       <title>Pablo Obando</title>
     </Head>

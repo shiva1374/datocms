@@ -89,7 +89,6 @@ export const form = css`
 export const authorImage = css`
   width: 7rem;
   height: 7rem;
-  border-radius: 3.5rem;
   @media (max-width: 768px) {
     width: 5rem;
     height: 5rem;

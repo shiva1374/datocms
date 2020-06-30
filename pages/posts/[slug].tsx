@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import { useTheme } from 'emotion-theming'
 import Page from 'src/components/page'
 import Footer from 'src/components/footer'
-import Card from 'src/components/card'
-import { Post } from 'src/lib/types'
+import { Post, Theme } from 'src/lib/types'
 import { main, text, authorImage } from 'src/styles'
 import { getAllPosts, getPost } from 'src/lib/datocms'
 
@@ -20,17 +20,8 @@ const title = css`
   }
 `
 
-export const authorAnimation = css`
-  ${authorImage}
-  transition-duration: 0.8s;
-  transition-property: transform;
-  &:hover {
-    cursor: pointer;
-    transform: rotate(360deg);
-  }
-`
-
 const PostPage: React.FC<{ post: Post }> = ({ post }) => {
+  const theme = useTheme<Theme>()
   const { author } = post
   return (
     <Page>
@@ -40,19 +31,6 @@ const PostPage: React.FC<{ post: Post }> = ({ post }) => {
           <div css={text} dangerouslySetInnerHTML={{ __html: post.content }} />
         </article>
       </main>
-      <Card>
-        <img
-          src={`${author.picture.url}?w=150&h=200`}
-          css={authorAnimation}
-          alt={author.name as string}
-        />
-        <div>
-          <h4>{author.name}</h4>
-          <p>
-            <small>{author.description}</small>
-          </p>
-        </div>
-      </Card>
       <Footer />
     </Page>
   )

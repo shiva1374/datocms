@@ -61,14 +61,14 @@ const Home: React.FC<{ author: Author }> = ({ author }) => {
             </Link>
           </p>
         </section>
+        <section css={containerGift}>
+          <Link href='/source-code'>
+            <a css={link}>
+              <FaGift css={iconGift} />
+            </a>
+          </Link>
+        </section>
       </main>
-      <section css={containerGift}>
-        <Link href='/source-code'>
-          <a css={link}>
-            <FaGift css={iconGift} />
-          </a>
-        </Link>
-      </section>
       <Footer />
     </Page>
   )
