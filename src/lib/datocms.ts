@@ -1,4 +1,6 @@
 import { GraphQLClient } from 'graphql-request'
+import remark from 'remark'
+import html from 'remark-html'
 import { RequestProps, Author, Post } from 'src/lib/types'
 
 export const request = ({ query, variables }: RequestProps) => {
@@ -52,6 +54,10 @@ query POST_QUERY($slug: String!){
   post(filter: { slug: { eq: $slug } }) {
     author {
       name
+      description
+      picture {
+        url
+      }
     }
     content
     date
@@ -80,5 +86,7 @@ export const getPost = async (slug: string | string[]): Promise<Post> => {
     query: POST_QUERY,
     variables: { slug: slug },
   })
-  return data.post
+  const processedContent = await remark().use(html).process(data.post.content)
+  const content = processedContent.toString()
+  return { ...data.post, content }
 }

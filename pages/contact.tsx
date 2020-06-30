@@ -2,6 +2,7 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import { FaRegHandPointRight } from 'react-icons/fa'
+import Page from 'src/components/page'
 import Footer from 'src/components/footer'
 import { ContactForm } from 'src/lib/types'
 import { main, text, form } from 'src/styles'
@@ -25,7 +26,7 @@ const Contact: React.FC = () => {
   }
 
   return (
-    <>
+    <Page>
       <main css={main}>
         <section>
           <h1>
@@ -77,7 +78,7 @@ const Contact: React.FC = () => {
         </form>
       </main>
       <Footer />
-    </>
+    </Page>
   )
 }
 

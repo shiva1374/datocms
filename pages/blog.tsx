@@ -3,6 +3,7 @@ import { jsx, css } from '@emotion/core'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import { useTheme } from 'emotion-theming'
+import Page from 'src/components/page'
 import Footer from 'src/components/footer'
 import Date from 'src/components/date'
 import { main, text } from 'src/styles'
@@ -33,13 +34,13 @@ const titleElement = (theme: Theme) => css`
 const Blog: React.FC<{ allPosts: Post[] }> = ({ allPosts }) => {
   const theme = useTheme<Theme>()
   return (
-    <>
+    <Page>
       <main css={main}>
         <section>
           <ul css={list}>
             {allPosts?.map(({ title, excerpt, date, slug }) => (
               <li css={listElement} key={slug}>
-                <Link href='/blog/[slug]' as={`/blog/${slug}`}>
+                <Link href='/posts/[slug]' as={`/posts/${slug}`}>
                   <a css={titleElement(theme)}>
                     <h2>{title}</h2>
                   </a>
@@ -54,7 +55,7 @@ const Blog: React.FC<{ allPosts: Post[] }> = ({ allPosts }) => {
         </section>
       </main>
       <Footer />
-    </>
+    </Page>
   )
 }
 
