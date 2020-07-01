@@ -57,12 +57,12 @@ const social: Social = [
   },
   {
     name: 'linkedin',
-    url: '​https://www.linkedin.com/in/pabloobandodev',
+    url: 'https://www.linkedin.com/in/pabloobandodev',
     icon: <FaLinkedinIn />,
   },
   {
     name: 'stackoverflow',
-    url: '​https://stackoverflow.com/story/pabloobandodev',
+    url: 'https://stackoverflow.com/story/pabloobandodev',
     icon: <FaStackOverflow />,
   },
 ]
