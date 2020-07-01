@@ -7,22 +7,23 @@ import Footer from 'src/components/footer'
 import { ContactForm } from 'src/lib/types'
 import { main, text, form } from 'src/styles'
 
-const Contact: React.FC = () => {
-  const [formData, setFormData] = React.useState<ContactForm>({
-    email: '',
-    name: '',
-    message: '',
-  })
+const initialStateForm: ContactForm = {
+  email: '',
+  name: '',
+  message: '',
+  loading: false,
+}
 
-  const [loading, setLoading] = React.useState(false)
+const Contact: React.FC = () => {
+  const [formData, setFormData] = React.useState<ContactForm>(initialStateForm)
 
   const saveToFormData = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value })
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    setFormData({ email: '', name: '', message: '' })
-    setLoading(!loading)
+    setFormData({ ...formData, loading: true })
+    setFormData(initialStateForm)
   }
 
   return (
@@ -39,7 +40,7 @@ const Contact: React.FC = () => {
           </p>
         </section>
         <form onSubmit={onSubmit} css={form}>
-          <fieldset disabled={loading} aria-busy={loading}>
+          <fieldset disabled={formData.loading} aria-busy={formData.loading}>
             <label htmlFor='email'>
               Email
               <input
@@ -48,6 +49,7 @@ const Contact: React.FC = () => {
                 placeholder='email'
                 value={formData.email}
                 onChange={saveToFormData}
+                required
               />
             </label>
             <label htmlFor='name'>
@@ -58,6 +60,7 @@ const Contact: React.FC = () => {
                 placeholder='name'
                 value={formData.name}
                 onChange={saveToFormData}
+                required
               />
             </label>
             <label htmlFor='message'>
@@ -68,11 +71,12 @@ const Contact: React.FC = () => {
                 placeholder='message'
                 value={formData.message}
                 onChange={saveToFormData}
+                required
               />
             </label>
             <div className='containerSubmit'>
               <FaRegHandPointRight />
-              <button type='submit'>Send!</button>
+              <button type='submit'>SEND</button>
             </div>
           </fieldset>
         </form>

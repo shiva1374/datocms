@@ -5,7 +5,7 @@ import { useTheme } from 'emotion-theming'
 import Page from 'src/components/page'
 import Footer from 'src/components/footer'
 import { Post, Theme } from 'src/lib/types'
-import { main, text, authorImage } from 'src/styles'
+import { main, text } from 'src/styles'
 import { getAllPosts, getPost } from 'src/lib/datocms'
 
 const title = css`

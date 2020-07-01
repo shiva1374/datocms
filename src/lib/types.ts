@@ -27,7 +27,12 @@ export type Post = {
   updatedAt?: string
 }
 
-export type ContactForm = { email: string; name: string; message: string }
+export type ContactForm = {
+  email: string
+  name: string
+  message: string
+  loading?: boolean
+}
 
 export type Theme = {
   background: string
@@ -41,4 +46,9 @@ export type RequestProps = {
   query: string
   variables: any
   preview?: boolean
+}
+
+export type MailResponse = {
+  success: boolean
+  message: string
 }
