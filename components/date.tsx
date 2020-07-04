@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { parseISO, format } from 'date-fns'
-import { Theme } from 'src/lib/types'
+import { Theme } from 'lib/types'
 import { useTheme } from 'emotion-theming'
 
 const text = (theme: Theme) => css`

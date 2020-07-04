@@ -2,11 +2,11 @@
 import { jsx, css } from '@emotion/core'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useTheme } from 'emotion-theming'
-import Page from 'src/components/page'
-import Footer from 'src/components/footer'
-import { Post, Theme } from 'src/lib/types'
-import { main, text } from 'src/styles'
-import { getAllPosts, getPost } from 'src/lib/datocms'
+import Page from 'components/page'
+import Footer from 'components/footer'
+import { Post, Theme } from 'lib/types'
+import { main, text } from 'styles'
+import { getAllPosts, getPost } from 'lib/datocms'
 
 const title = css`
   line-height: 1.25;

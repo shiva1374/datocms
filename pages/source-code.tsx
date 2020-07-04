@@ -2,9 +2,9 @@
 import { jsx, css } from '@emotion/core'
 import React from 'react'
 import Link from 'next/link'
-import Page from 'src/components/page'
-import Footer from 'src/components/footer'
-import { main, text } from 'src/styles'
+import Page from 'components/page'
+import Footer from 'components/footer'
+import { main, text } from 'styles'
 
 const containerOptions = css`
   display: flex;

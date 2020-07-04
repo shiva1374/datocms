@@ -2,10 +2,10 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import { FaRegHandPointRight } from 'react-icons/fa'
-import Page from 'src/components/page'
-import Footer from 'src/components/footer'
-import { ContactForm } from 'src/lib/types'
-import { main, text, form } from 'src/styles'
+import Page from 'components/page'
+import Footer from 'components/footer'
+import { ContactForm } from 'lib/types'
+import { main, text, form } from 'styles'
 
 const initialStateForm: ContactForm = {
   email: '',

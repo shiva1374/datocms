@@ -3,11 +3,11 @@ import { css, jsx } from '@emotion/core'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import { FaGift } from 'react-icons/fa'
-import Page from 'src/components/page'
-import Footer from 'src/components/footer'
-import { Author } from 'src/lib/types'
-import { text, main, iconGift } from 'src/styles'
-import { getAuthor } from 'src/lib/datocms'
+import Page from 'components/page'
+import Footer from 'components/footer'
+import { Author } from 'lib/types'
+import { text, main, iconGift } from 'styles'
+import { getAuthor } from 'lib/datocms'
 
 const list = css`
   ${text};

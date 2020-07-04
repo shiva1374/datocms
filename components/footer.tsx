@@ -7,7 +7,7 @@ import {
   FaStackOverflow,
 } from 'react-icons/fa'
 import { useTheme } from 'emotion-theming'
-import { Theme, Social } from 'src/lib/types'
+import { Theme, Social } from 'lib/types'
 
 const container = css`
   display: flex;

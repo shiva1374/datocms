@@ -3,12 +3,12 @@ import { jsx, css } from '@emotion/core'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import { useTheme } from 'emotion-theming'
-import Page from 'src/components/page'
-import Footer from 'src/components/footer'
-import Date from 'src/components/date'
-import { main, text } from 'src/styles'
-import { Post, Theme } from 'src/lib/types'
-import { getAllPosts } from 'src/lib/datocms'
+import Page from 'components/page'
+import Footer from 'components/footer'
+import Date from 'components/date'
+import { main, text } from 'styles'
+import { Post, Theme } from 'lib/types'
+import { getAllPosts } from 'lib/datocms'
 
 const list = css`
   list-style: none;

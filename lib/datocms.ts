@@ -1,7 +1,7 @@
 import { GraphQLClient } from 'graphql-request'
 import remark from 'remark'
 import html from 'remark-html'
-import { RequestProps, Author, Post } from 'src/lib/types'
+import { RequestProps, Author, Post } from 'lib/types'
 
 export const request = ({ query, variables }: RequestProps) => {
   const endpoint = process.env.NEXT_DATOCMS_API_ENDPOINT

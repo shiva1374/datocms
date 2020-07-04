@@ -3,7 +3,7 @@ import { css, jsx } from '@emotion/core'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTheme } from 'emotion-theming'
-import { Theme } from 'src/lib/types'
+import { Theme } from 'lib/types'
 
 const a = (active: boolean, theme: Theme) => css`
   margin-right: 1rem;

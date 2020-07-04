@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
-import useDarkMode from 'src/hooks/useDarkMode'
-import theme from 'src/lib/theme'
+import useDarkMode from 'hooks/useDarkMode'
+import theme from 'lib/theme'
 
 const defaultContextData: [boolean, () => void] = [false, () => {}]
 

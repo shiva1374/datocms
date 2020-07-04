@@ -3,10 +3,10 @@ import { css, jsx, Global } from '@emotion/core'
 import React from 'react'
 import Router from 'next/router'
 import NProgress from 'nprogress'
-import { Theme } from 'src/lib/types'
+import { Theme } from 'lib/types'
 import { useTheme } from 'emotion-theming'
-import Meta from 'src/components/meta'
-import Header from 'src/components/header'
+import Meta from 'components/meta'
+import Header from 'components/header'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())

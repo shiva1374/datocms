@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import { FaLightbulb } from 'react-icons/fa'
-import { useThemeMode } from 'src/context/theme-context'
+import { useThemeMode } from 'context/theme-context'
 import { useTheme } from 'emotion-theming'
-import { Theme } from 'src/lib/types'
-import { authorImage } from 'src/styles'
-import ActiveLink from 'src/components/active-link'
+import { Theme } from 'lib/types'
+import { authorImage } from 'styles'
+import ActiveLink from 'components/active-link'
 
 const themeIcon = (theme: Theme) => css`
   background-color: transparent;
