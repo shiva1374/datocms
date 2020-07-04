@@ -14,16 +14,44 @@ const initialStateForm: ContactForm = {
   loading: false,
 }
 
-const Contact: React.FC = () => {
-  const [formData, setFormData] = React.useState<ContactForm>(initialStateForm)
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'email':
+      return { ...state, email: action.value }
+    case 'name':
+      return { ...state, name: action.value }
+    case 'message':
+      return { ...state, message: action.value }
+    case 'toggle':
+      return { ...state, loading: !state.loading }
+    case 'clear_state':
+      return { ...initialStateForm }
+    default:
+      return state
+  }
+}
 
-  const saveToFormData = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+const Contact: React.FC = () => {
+  const [formData, dispatch] = React.useReducer(reducer, initialStateForm)
+
+  const inputHandler = (e) => {
+    const { name, value } = e.target
+    dispatch({ type: name, value })
+  }
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    setFormData({ ...formData, loading: true })
-    setFormData(initialStateForm)
+    dispatch({ type: 'toggle' })
+    await fetch('/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      }),
+    })
+    dispatch({ type: 'clear_state' })
   }
 
   return (
@@ -48,7 +76,7 @@ const Contact: React.FC = () => {
                 name='email'
                 placeholder='email'
                 value={formData.email}
-                onChange={saveToFormData}
+                onChange={inputHandler}
                 required
               />
             </label>
@@ -59,7 +87,7 @@ const Contact: React.FC = () => {
                 name='name'
                 placeholder='name'
                 value={formData.name}
-                onChange={saveToFormData}
+                onChange={inputHandler}
                 required
               />
             </label>
@@ -70,7 +98,7 @@ const Contact: React.FC = () => {
                 name='message'
                 placeholder='message'
                 value={formData.message}
-                onChange={saveToFormData}
+                onChange={inputHandler}
                 required
               />
             </label>
