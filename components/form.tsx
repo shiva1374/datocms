@@ -1,15 +1,5 @@
-import { css, keyframes } from '@emotion/core'
-
-export const text = css`
-  line-height: 1.7;
-  letter-spacing: 1.2;
-  font-size: 1.1em;
-`
-
-export const main = css`
-  flex-grow: 1;
-  padding: 3.5rem 2rem;
-`
+/** @jsx jsx */
+import { jsx, css, keyframes } from '@emotion/core'
 
 const loading = keyframes`
   from {
@@ -86,38 +76,15 @@ export const form = css`
   }
 `
 
-export const authorImage = css`
-  width: 7rem;
-  height: 7rem;
-  @media (max-width: 768px) {
-    width: 5rem;
-    height: 5rem;
-  }
-`
+const Form: React.FC<{ onSubmit: any; children: React.ReactNode }> = ({
+  onSubmit,
+  children,
+}) => {
+  return (
+    <form onSubmit={onSubmit} css={form}>
+      {children}
+    </form>
+  )
+}
 
-const shake = keyframes`
-  10%, 90% {
-    transform: translate3d(-1px, 0, 0);
-  }
-  
-  20%, 80% {
-    transform: translate3d(2px, 0, 0);
-  }
-
-  30%, 50%, 70% {
-    transform: translate3d(-4px, 0, 0);
-  }
-
-  40%, 60% {
-    transform: translate3d(4px, 0, 0);
-  }
-`
-
-export const iconGift = css`
-  font-size: 5rem;
-  &:hover {
-    cursor: pointer;
-    animation: ${shake} 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-    transform: translate3d(0, 0, 0);
-  }
-`
+export default Form

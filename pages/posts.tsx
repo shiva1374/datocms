@@ -6,7 +6,7 @@ import { useTheme } from 'emotion-theming'
 import Page from 'components/page'
 import Footer from 'components/footer'
 import Date from 'components/date'
-import { main, text } from 'styles'
+import { main, text } from 'pages'
 import { Post, Theme } from 'lib/types'
 import { getAllPosts } from 'lib/datocms'
 

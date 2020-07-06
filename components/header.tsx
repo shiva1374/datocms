@@ -4,7 +4,6 @@ import { FaLightbulb } from 'react-icons/fa'
 import { useThemeMode } from 'context/theme-context'
 import { useTheme } from 'emotion-theming'
 import { Theme } from 'lib/types'
-import { authorImage } from 'styles'
 import ActiveLink from 'components/active-link'
 
 const themeIcon = (theme: Theme) => css`
@@ -23,6 +22,15 @@ const container = css`
 const options = css`
   display: flex;
   align-items: center;
+`
+
+const authorImage = css`
+  width: 7rem;
+  height: 7rem;
+  @media (max-width: 768px) {
+    width: 5rem;
+    height: 5rem;
+  }
 `
 
 const Header: React.FC = () => {

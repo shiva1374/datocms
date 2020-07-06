@@ -4,8 +4,9 @@ import React from 'react'
 import { FaRegHandPointRight } from 'react-icons/fa'
 import Page from 'components/page'
 import Footer from 'components/footer'
+import Form from 'components/form'
 import { ContactForm } from 'lib/types'
-import { main, text, form } from 'styles'
+import { main, text } from 'pages'
 
 const initialStateForm: ContactForm = {
   email: '',
@@ -67,7 +68,7 @@ const Contact: React.FC = () => {
             will answer you as soon as possible.
           </p>
         </section>
-        <form onSubmit={onSubmit} css={form}>
+        <Form onSubmit={onSubmit}>
           <fieldset disabled={formData.loading} aria-busy={formData.loading}>
             <label htmlFor='email'>
               Email
@@ -107,7 +108,7 @@ const Contact: React.FC = () => {
               <button type='submit'>SEND</button>
             </div>
           </fieldset>
-        </form>
+        </Form>
       </main>
       <Footer />
     </Page>

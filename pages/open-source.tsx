@@ -4,7 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import Page from 'components/page'
 import Footer from 'components/footer'
-import { main, text } from 'styles'
+import { main, text } from 'pages'
 
 const containerOptions = css`
   display: flex;

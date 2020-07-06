@@ -5,7 +5,7 @@ import Head from 'next/head'
 import Page from 'components/page'
 import Footer from 'components/footer'
 import { Post } from 'lib/types'
-import { main, text } from 'styles'
+import { main, text } from 'pages'
 import { getAllPosts, getPost } from 'lib/datocms'
 import { SITE_URL, SITE_TITLE } from 'lib/constants'
 

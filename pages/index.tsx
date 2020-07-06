@@ -1,13 +1,23 @@
 /** @jsx jsx */
-import { css, jsx } from '@emotion/core'
+import { css, jsx, keyframes } from '@emotion/core'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import { FaGift } from 'react-icons/fa'
 import Page from 'components/page'
 import Footer from 'components/footer'
 import { Author } from 'lib/types'
-import { text, main, iconGift } from 'styles'
 import { getAuthor } from 'lib/datocms'
+
+export const text = css`
+  line-height: 1.7;
+  letter-spacing: 1.2;
+  font-size: 1.1em;
+`
+
+export const main = css`
+  flex-grow: 1;
+  padding: 3.5rem 2rem;
+`
 
 const list = css`
   ${text};
@@ -25,6 +35,33 @@ const link = css`
 const containerGift = css`
   text-align: center;
   margin-top: 4rem;
+`
+
+const shake = keyframes`
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+`
+
+export const iconGift = css`
+  font-size: 5rem;
+  &:hover {
+    cursor: pointer;
+    animation: ${shake} 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
+  }
 `
 
 const Home: React.FC<{ author: Author }> = ({ author }) => {
