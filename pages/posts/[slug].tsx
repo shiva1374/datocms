@@ -1,10 +1,9 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { useTheme } from 'emotion-theming'
 import Page from 'components/page'
 import Footer from 'components/footer'
-import { Post, Theme } from 'lib/types'
+import { Post } from 'lib/types'
 import { main, text } from 'styles'
 import { getAllPosts, getPost } from 'lib/datocms'
 
@@ -20,13 +19,19 @@ const title = css`
   }
 `
 
+const article = css`
+  ${text};
+  & img {
+    width: 100%;
+    height: auto;
+  }
+`
+
 const PostPage: React.FC<{ post: Post }> = ({ post }) => {
-  const theme = useTheme<Theme>()
-  const { author } = post
   return (
     <Page>
       <main css={main}>
-        <article>
+        <article css={article}>
           <h1 css={title}>{post.title}</h1>
           <div css={text} dangerouslySetInnerHTML={{ __html: post.content }} />
         </article>
