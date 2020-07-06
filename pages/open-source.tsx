@@ -52,14 +52,14 @@ const SourceCode: React.FC = () => {
           <p css={text}>So get to work 🚀</p>
         </section>
         <section css={containerOptions}>
-          <Link href='/posts/tutorial-fast-site'>
+          <Link href='/posts/easy-implementation'>
             <a css={option}>
-              <h2 css={text}>Fast Way</h2>
+              <h2 css={text}>Easy Implementation</h2>
             </a>
           </Link>
-          <Link href='/posts/tutorial-explained-site'>
+          <Link href='/posts/explained-implementation'>
             <a css={option}>
-              <h2 css={text}>Path Explained</h2>
+              <h2 css={text}>Explained Implementation</h2>
             </a>
           </Link>
         </section>

@@ -1,10 +1,9 @@
 export type Author = {
   createdAt?: Date
   description?: String
-  hobbies?: { values: string[] }
+  hobbies?: string[]
   id?: String
   name?: String
-  picture?: any
   updatedAt?: Date
 }
 

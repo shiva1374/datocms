@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useTheme } from 'emotion-theming'
 import { Theme } from 'lib/types'
+import { SITE_TITLE } from 'lib/constants'
 
 const Meta: React.FC = () => {
   const theme = useTheme<Theme>()
@@ -13,7 +14,7 @@ const Meta: React.FC = () => {
       <link rel='stylesheet' type='text/css' href='/nprogress.css' />
       <meta name='keywords' content='Keywords' />
       <meta name='theme-color' content={theme.background} />
-      <title>Pablo Obando</title>
+      <title>{SITE_TITLE}</title>
     </Head>
   )
 }

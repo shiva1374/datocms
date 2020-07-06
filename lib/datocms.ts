@@ -32,7 +32,7 @@ export const ALL_POSTS_QUERY = `
       date
       slug
       coverImage {
-        responsiveImage(imgixParams: { fit: crop, w: 300, h: 300, auto: format }) {
+        responsiveImage(imgixParams: { fit: crop, w: 600, auto: format }) {
           srcSet
           webpSrcSet
           sizes
@@ -55,12 +55,27 @@ query POST_QUERY($slug: String!){
     author {
       name
       description
-      picture {
-        url
-      }
     }
     content
+    id
+    title
+    excerpt
     date
+    slug
+    coverImage {
+      responsiveImage(imgixParams: { fit: crop, w: 600, auto: format }) {
+        srcSet
+        webpSrcSet
+        sizes
+        src
+        width
+        height
+        aspectRatio
+        alt
+        title
+        base64
+      }
+    }
   }
 }
 `

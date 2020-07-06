@@ -33,14 +33,14 @@ const titleElement = (theme: Theme) => css`
   }
 `
 
-const Blog: React.FC<{ allPosts: Post[] }> = ({ allPosts }) => {
+const Posts: React.FC<{ allPosts: Post[] }> = ({ allPosts }) => {
   const theme = useTheme<Theme>()
   return (
     <Page>
       <main css={main}>
         <section>
           <ul css={list}>
-            {allPosts?.map(({ title, excerpt, date, slug }) => (
+            {allPosts?.map(({ title, excerpt, date, slug, coverImage }) => (
               <li css={listElement(theme)} key={slug}>
                 <Link href='/posts/[slug]' as={`/posts/${slug}`}>
                   <a css={titleElement(theme)}>
@@ -70,4 +70,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
-export default Blog
+export default Posts

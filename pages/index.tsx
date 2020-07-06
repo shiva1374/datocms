@@ -38,10 +38,8 @@ const Home: React.FC<{ author: Author }> = ({ author }) => {
           </p>
           <h3>Another cool things that I enjoy</h3>
           <ul css={list}>
-            {author?.hobbies?.values?.map((hobby) => (
-              <li key={hobby}>
-                <span>{hobby}</span>
-              </li>
+            {author?.hobbies?.map((hobby) => (
+              <li key={hobby}>{hobby}</li>
             ))}
           </ul>
           <p css={text}>
@@ -62,7 +60,7 @@ const Home: React.FC<{ author: Author }> = ({ author }) => {
           </p>
         </section>
         <section css={containerGift}>
-          <Link href='/source-code'>
+          <Link href='/open-source'>
             <a css={link}>
               <FaGift css={iconGift} />
             </a>

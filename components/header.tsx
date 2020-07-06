@@ -40,7 +40,7 @@ const Header: React.FC = () => {
         </ActiveLink>
         <div css={options}>
           <ActiveLink href='/contact'>contact</ActiveLink>
-          <ActiveLink href='/blog'>blog</ActiveLink>
+          <ActiveLink href='/posts'>posts</ActiveLink>
           <button
             onClick={toggle}
             css={themeIcon(theme)}
