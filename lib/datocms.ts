@@ -2,6 +2,7 @@ import { GraphQLClient } from 'graphql-request'
 import remark from 'remark'
 import html from 'remark-html'
 import { RequestProps, Author, Post } from 'lib/types'
+import { AUTHOR_NAME_DATOCMS } from 'lib/constants'
 
 export const request = ({ query, variables }: RequestProps) => {
   const endpoint = process.env.NEXT_DATOCMS_API_ENDPOINT
@@ -83,7 +84,7 @@ query POST_QUERY($slug: String!){
 export const getAuthor = async (): Promise<Author> => {
   const data = await request({
     query: AUTHOR_QUERY,
-    variables: { name: 'Pablo Obando' },
+    variables: { name: AUTHOR_NAME_DATOCMS },
   })
   return data.author
 }
