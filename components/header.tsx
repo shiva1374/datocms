@@ -25,11 +25,11 @@ const options = css`
 `
 
 const authorImage = css`
-  width: 7rem;
-  height: 7rem;
+  width: 9rem;
+  height: auto;
   @media (max-width: 768px) {
-    width: 5rem;
-    height: 5rem;
+    width: 7rem;
+    height: auto;
   }
 `
 

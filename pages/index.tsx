@@ -2,7 +2,6 @@
 import { css, jsx, keyframes } from '@emotion/core'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
-import { FaGift } from 'react-icons/fa'
 import Page from 'components/page'
 import Footer from 'components/footer'
 import { Author } from 'lib/types'
@@ -30,11 +29,6 @@ const link = css`
   &:hover {
     cursor: pointer;
   }
-`
-
-const containerGift = css`
-  text-align: center;
-  margin-top: 4rem;
 `
 
 const shake = keyframes`
@@ -71,7 +65,7 @@ const Home: React.FC<{ author: Author }> = ({ author }) => {
         <section>
           <h2 css={text}>Hey ✌️</h2>
           <p css={text}>
-            My name is <strong>{author.name}</strong>, {author.description}
+            My name is <strong>{author?.name}</strong>, {author?.description}
           </p>
           <h3>Another cool things that I enjoy</h3>
           <ul css={list}>
@@ -95,13 +89,6 @@ const Home: React.FC<{ author: Author }> = ({ author }) => {
               </a>
             </Link>
           </p>
-        </section>
-        <section css={containerGift}>
-          <Link href='/open-source'>
-            <a css={link}>
-              <FaGift css={iconGift} />
-            </a>
-          </Link>
         </section>
       </main>
       <Footer />

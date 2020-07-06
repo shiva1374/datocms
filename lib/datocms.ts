@@ -82,27 +82,30 @@ query POST_QUERY($slug: String!){
 `
 
 export const getAuthor = async (): Promise<Author> => {
-  const data = await request({
-    query: AUTHOR_QUERY,
-    variables: { name: AUTHOR_NAME_DATOCMS },
-  })
-  return data.author
+  // const data = await request({
+  //   query: AUTHOR_QUERY,
+  //   variables: { name: AUTHOR_NAME_DATOCMS },
+  // })
+  // return data.author
+  return {}
 }
 
 export const getAllPosts = async (): Promise<Post[]> => {
-  const data = await request({
-    query: ALL_POSTS_QUERY,
-    variables: { limit: 10 },
-  })
-  return data.allPosts
+  // const data = await request({
+  //   query: ALL_POSTS_QUERY,
+  //   variables: { limit: 10 },
+  // })
+  // return data.allPosts
+  return []
 }
 
 export const getPost = async (slug: string | string[]): Promise<Post> => {
-  const data = await request({
-    query: POST_QUERY,
-    variables: { slug: slug },
-  })
-  const processedContent = await remark().use(html).process(data.post.content)
-  const content = processedContent.toString()
-  return { ...data.post, content }
+  // const data = await request({
+  //   query: POST_QUERY,
+  //   variables: { slug: slug },
+  // })
+  // const processedContent = await remark().use(html).process(data.post.content)
+  // const content = processedContent.toString()
+  // return { ...data.post, content }
+  return {}
 }
