@@ -38,17 +38,17 @@ const PostPage: React.FC<{ post: Post }> = ({ post }) => {
     <Page>
       <Head>
         <title key='title'>
-          {post.title} — {SITE_TITLE}
+          {post?.title} — {SITE_TITLE}
         </title>
-        <meta property='og:title' content={post.title} />
-        <meta property='og:url' content={`${SITE_URL}${post.slug}`} />
-        <link rel='canonical' href={`${SITE_URL}/posts/${post.slug}`} />
-        <meta property='og:description' content={post.excerpt} />
-        <meta name='description' content={post.excerpt} />
+        <meta property='og:title' content={post?.title} />
+        <meta property='og:url' content={`${SITE_URL}${post?.slug}`} />
+        <link rel='canonical' href={`${SITE_URL}/posts/${post?.slug}`} />
+        <meta property='og:description' content={post?.excerpt} />
+        <meta name='description' content={post?.excerpt} />
       </Head>
       <main css={main}>
         <article css={article}>
-          <h1 css={title}>{post.title}</h1>
+          <h1 css={title}>{post?.title}</h1>
           {post?.coverImage?.responsiveImage?.src && (
             <img
               src={post?.coverImage.responsiveImage.src}
@@ -59,7 +59,7 @@ const PostPage: React.FC<{ post: Post }> = ({ post }) => {
               `}
             />
           )}
-          <div css={text} dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div css={text} dangerouslySetInnerHTML={{ __html: post?.content }} />
         </article>
       </main>
       <Footer />
