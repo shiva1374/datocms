@@ -5,8 +5,7 @@ import { RequestProps, Author, Post } from 'lib/types'
 import { AUTHOR_NAME_DATOCMS } from 'lib/constants'
 
 export const request = ({ query, variables }: RequestProps) => {
-  const endpoint = process.env.NEXT_DATOCMS_API_ENDPOINT
-  const client = new GraphQLClient(endpoint, {
+  const client = new GraphQLClient('https://graphql.datocms.com/', {
     headers: {
       authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
     },
