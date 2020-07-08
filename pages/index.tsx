@@ -1,11 +1,11 @@
 /** @jsx jsx */
-import { css, jsx, keyframes } from '@emotion/core'
-import { GetStaticProps } from 'next'
+import { css, jsx } from '@emotion/core'
 import Link from 'next/link'
 import Page from 'components/page'
 import Footer from 'components/footer'
-import { Author } from 'lib/types'
-import { getAuthor } from 'lib/datocms'
+import { useTheme } from 'emotion-theming'
+import { Theme } from 'lib/types'
+import { author } from 'lib/constants'
 
 export const text = css`
   line-height: 1.7;
@@ -23,42 +23,14 @@ const list = css`
   padding: 0 1rem 2rem;
 `
 
-const link = css`
+const link = (theme: Theme) => css`
   ${text};
   text-decoration: none;
-  &:hover {
-    cursor: pointer;
-  }
+  color: ${theme.primary};
 `
 
-const shake = keyframes`
-  10%, 90% {
-    transform: translate3d(-1px, 0, 0);
-  }
-  
-  20%, 80% {
-    transform: translate3d(2px, 0, 0);
-  }
-
-  30%, 50%, 70% {
-    transform: translate3d(-4px, 0, 0);
-  }
-
-  40%, 60% {
-    transform: translate3d(4px, 0, 0);
-  }
-`
-
-export const iconGift = css`
-  font-size: 5rem;
-  &:hover {
-    cursor: pointer;
-    animation: ${shake} 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-    transform: translate3d(0, 0, 0);
-  }
-`
-
-const Home: React.FC<{ author: Author }> = ({ author }) => {
+const Home: React.FC = () => {
+  const theme = useTheme<Theme>()
   return (
     <Page>
       <main css={main}>
@@ -84,9 +56,7 @@ const Home: React.FC<{ author: Author }> = ({ author }) => {
             </i>{' '}
             projects or business, you can{' '}
             <Link href='/contact'>
-              <a css={link}>
-                <span>contact me!</span>
-              </a>
+              <a css={link(theme)}>contact me!</a>
             </Link>
           </p>
         </section>
@@ -94,15 +64,6 @@ const Home: React.FC<{ author: Author }> = ({ author }) => {
       <Footer />
     </Page>
   )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  const author = await getAuthor()
-  return {
-    props: {
-      author,
-    },
-  }
 }
 
 export default Home

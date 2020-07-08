@@ -4,7 +4,8 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Page from 'components/page'
 import Footer from 'components/footer'
-import { Post } from 'lib/types'
+import { useTheme } from 'emotion-theming'
+import { Post, Theme } from 'lib/types'
 import { main, text } from 'pages'
 import { getAllPosts, getPost } from 'lib/datocms'
 import { SITE_URL, SITE_TITLE } from 'lib/constants'
@@ -26,14 +27,20 @@ const img = css`
   height: auto;
 `
 
-const article = css`
+const article = (theme: Theme) => css`
   ${text};
   & img {
     ${img}
   }
+  word-wrap: break-word;
+  a {
+    text-decoration: none;
+    color: ${theme.primary};
+  }
 `
 
 const PostPage: React.FC<{ post: Post }> = ({ post }) => {
+  const theme = useTheme<Theme>()
   return (
     <Page>
       <Head>
@@ -79,7 +86,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await getAllPosts()
   return {
-    paths: allPosts?.map((post) => `/posts/${post.slug}`),
+    paths: allPosts?.map((post) => `/posts/${post?.slug}`),
     fallback: true,
   }
 }

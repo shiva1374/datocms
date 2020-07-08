@@ -1,8 +1,7 @@
 import { GraphQLClient } from 'graphql-request'
 import remark from 'remark'
 import html from 'remark-html'
-import { RequestProps, Author, Post } from 'lib/types'
-import { AUTHOR_NAME_DATOCMS } from 'lib/constants'
+import { RequestProps, Post } from 'lib/types'
 
 export const request = ({ query, variables }: RequestProps) => {
   const client = new GraphQLClient('https://graphql.datocms.com/', {
@@ -12,16 +11,6 @@ export const request = ({ query, variables }: RequestProps) => {
   })
   return client.request(query, variables)
 }
-
-export const AUTHOR_QUERY = `
-  query AUTHOR_QUERY($name: String!) {
-    author(filter: { name: { matches: { pattern: $name } } }) {
-      name
-      description
-      hobbies
-    }
-  }
-`
 
 export const ALL_POSTS_QUERY = `
   query ALL_POSTS_QUERY($limit: IntType!) {
@@ -52,10 +41,6 @@ export const ALL_POSTS_QUERY = `
 export const POST_QUERY = `
 query POST_QUERY($slug: String!){
   post(filter: { slug: { eq: $slug } }) {
-    author {
-      name
-      description
-    }
     content
     id
     title
@@ -80,22 +65,13 @@ query POST_QUERY($slug: String!){
 }
 `
 
-export const getAuthor = async (): Promise<Author> => {
-  // const data = await request({
-  //   query: AUTHOR_QUERY,
-  //   variables: { name: AUTHOR_NAME_DATOCMS },
-  // })
-  // return data.author
-  return {}
-}
-
 export const getAllPosts = async (): Promise<Post[]> => {
   // const data = await request({
   //   query: ALL_POSTS_QUERY,
   //   variables: { limit: 10 },
   // })
-  // return data.allPosts
-  return []
+  // return data?.allPosts
+  return [{}]
 }
 
 export const getPost = async (slug: string | string[]): Promise<Post> => {
@@ -103,8 +79,8 @@ export const getPost = async (slug: string | string[]): Promise<Post> => {
   //   query: POST_QUERY,
   //   variables: { slug: slug },
   // })
-  // const processedContent = await remark().use(html).process(data.post.content)
+  // const processedContent = await remark().use(html).process(data?.post.content)
   // const content = processedContent.toString()
-  // return { ...data.post, content }
+  // return { ...data?.post, content }
   return {}
 }

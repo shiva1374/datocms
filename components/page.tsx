@@ -29,14 +29,11 @@ const globalStyles = (theme: Theme) => css`
     color: ${theme.body};
     background-color: ${theme.background};
   }
-  span {
-    color: ${theme.primary};
-  }
 `
 
 const innerContainer = css`
-  max-width: 50rem;
-  padding: 2rem 1rem;
+  max-width: 53rem;
+  padding: 1rem 1rem;
   min-height: 100vh;
   margin: 0 auto;
   display: flex;
