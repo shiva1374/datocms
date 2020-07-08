@@ -71,7 +71,7 @@ export const getAllPosts = async (): Promise<Post[]> => {
   //   variables: { limit: 10 },
   // })
   // return data?.allPosts
-  return [{}]
+  return []
 }
 
 export const getPost = async (slug: string | string[]): Promise<Post> => {
