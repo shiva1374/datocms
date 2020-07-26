@@ -8,7 +8,7 @@ export type Author = {
   name: string
   description: string
   hobbies: string[]
-  socialMedia
+  socialMedia: Social
 }
 
 export type Post = {
