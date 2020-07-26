@@ -25,8 +25,8 @@ const options = css`
 `
 
 const authorImage = css`
-  width: 9rem;
-  height: auto;
+  width: auto;
+  height: 8rem;
   @media (max-width: 768px) {
     width: 7rem;
     height: auto;
@@ -40,11 +40,7 @@ const Header: React.FC = () => {
     <header>
       <nav css={container}>
         <ActiveLink href='/'>
-          <img
-            src='/images/profile.png'
-            css={authorImage}
-            alt='Profile image'
-          />
+          <img src='/images/icon.png' css={authorImage} alt='icon image' />
         </ActiveLink>
         <div css={options}>
           <ActiveLink href='/contact'>contact</ActiveLink>

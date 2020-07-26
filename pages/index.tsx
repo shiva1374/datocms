@@ -51,9 +51,9 @@ export const iconGift = css`
   }
 `
 const authorImage = css`
-  width: 8rem;
-  height: 8rem;
-  border-radius: 4rem;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
   box-shadow: white 0px 0px 0px 3px, rgb(0, 0, 0, 0.2) 0px 3px 8px 3px;
   border-radius: 50%;
   margin-bottom: 1rem;
