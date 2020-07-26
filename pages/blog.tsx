@@ -1,10 +1,9 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import Link from 'next/link'
 import { useTheme } from 'emotion-theming'
 import Page from 'components/page'
-import Footer from 'components/footer'
 import Date from 'components/date'
 import { main, text } from 'pages'
 import { Post, Theme } from 'lib/types'
@@ -15,13 +14,20 @@ const list = css`
   padding: 0;
   margin: 0;
 `
-
-const listElement = (theme: Theme) => css`
+const listElement = css`
   margin: 0 0 4rem;
-  border-bottom: 1px solid ${theme.primary};
-  padding-bottom: 2rem;
+  .separator {
+    height: 5px;
+    width: 100%;
+    margin-top: 2rem;
+    background-image: linear-gradient(
+      to right,
+      #73dbc4 0%,
+      #c40876 80%,
+      #73dbc4 100%
+    );
+  }
 `
-
 const titleElement = (theme: Theme) => css`
   line-height: 1.25;
   margin-bottom: 0.75rem;
@@ -33,7 +39,7 @@ const titleElement = (theme: Theme) => css`
   }
 `
 
-const Posts: React.FC<{ allPosts: Post[] }> = ({ allPosts }) => {
+const Blog: React.FC<{ allPosts: Post[] }> = ({ allPosts }) => {
   const theme = useTheme<Theme>()
   return (
     <Page>
@@ -41,8 +47,8 @@ const Posts: React.FC<{ allPosts: Post[] }> = ({ allPosts }) => {
         <section>
           <ul css={list}>
             {allPosts?.map(({ title, excerpt, date, slug, coverImage }) => (
-              <li css={listElement(theme)} key={slug}>
-                <Link href='/posts/[slug]' as={`/posts/${slug}`}>
+              <li css={listElement} key={slug}>
+                <Link href='/blog/[slug]' as={`/blog/${slug}`}>
                   <a css={titleElement(theme)}>
                     <h2>{title}</h2>
                   </a>
@@ -51,17 +57,17 @@ const Posts: React.FC<{ allPosts: Post[] }> = ({ allPosts }) => {
                 <small>
                   <Date dateString={date} />
                 </small>
+                <div className='separator' />
               </li>
             ))}
           </ul>
         </section>
       </main>
-      <Footer />
     </Page>
   )
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const allPosts = await getAllPosts()
   return {
     props: {
@@ -70,4 +76,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
-export default Posts
+export default Blog

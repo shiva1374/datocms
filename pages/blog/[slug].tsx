@@ -3,7 +3,6 @@ import { jsx, css } from '@emotion/core'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Page from 'components/page'
-import Footer from 'components/footer'
 import { useTheme } from 'emotion-theming'
 import { Post, Theme } from 'lib/types'
 import { main, text } from 'pages'
@@ -21,21 +20,27 @@ const title = css`
     font-size: 1.1em;
   }
 `
-
-const img = css`
-  width: 100%;
-  height: auto;
-`
-
 const article = (theme: Theme) => css`
   ${text};
   & img {
-    ${img}
+    width: 100%;
+    height: auto;
   }
   word-wrap: break-word;
   a {
     text-decoration: none;
     color: ${theme.primary};
+  }
+`
+const imgTitle = css`
+  width: auto;
+  height: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
   }
 `
 
@@ -49,27 +54,23 @@ const PostPage: React.FC<{ post: Post }> = ({ post }) => {
         </title>
         <meta property='og:title' content={post?.title} />
         <meta property='og:url' content={`${SITE_URL}${post?.slug}`} />
-        <link rel='canonical' href={`${SITE_URL}/posts/${post?.slug}`} />
+        <link rel='canonical' href={`${SITE_URL}/blog/${post?.slug}`} />
         <meta property='og:description' content={post?.excerpt} />
         <meta name='description' content={post?.excerpt} />
       </Head>
       <main css={main}>
-        <article css={article}>
+        {post?.coverImage?.responsiveImage?.src && (
+          <img
+            src={post?.coverImage.responsiveImage.src}
+            alt={`Post Image of ${title}`}
+            css={imgTitle}
+          />
+        )}
+        <article css={article(theme)}>
           <h1 css={title}>{post?.title}</h1>
-          {post?.coverImage?.responsiveImage?.src && (
-            <img
-              src={post?.coverImage.responsiveImage.src}
-              alt={`Post Image of ${title}`}
-              css={css`
-                ${img};
-                max-height: 300px;
-              `}
-            />
-          )}
           <div css={text} dangerouslySetInnerHTML={{ __html: post?.content }} />
         </article>
       </main>
-      <Footer />
     </Page>
   )
 }
@@ -86,7 +87,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await getAllPosts()
   return {
-    paths: allPosts?.map((post) => `/posts/${post?.slug}`),
+    paths: allPosts?.map((post) => `/blog/${post?.slug}`),
     fallback: true,
   }
 }

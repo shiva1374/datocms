@@ -1,116 +1,36 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
+import { jsx, css } from '@emotion/core'
 import React from 'react'
-import { FaRegHandPointRight } from 'react-icons/fa'
 import Page from 'components/page'
-import Footer from 'components/footer'
-import Form from 'components/form'
-import { ContactForm } from 'lib/types'
-import { main, text } from 'pages'
-
-const initialStateForm: ContactForm = {
-  email: '',
-  name: '',
-  message: '',
-  loading: false,
-}
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'email':
-      return { ...state, email: action.value }
-    case 'name':
-      return { ...state, name: action.value }
-    case 'message':
-      return { ...state, message: action.value }
-    case 'toggle':
-      return { ...state, loading: !state.loading }
-    case 'clear_state':
-      return { ...initialStateForm }
-    default:
-      return state
-  }
-}
+import { main, text, list, link } from 'pages'
+import { useTheme } from 'emotion-theming'
+import { Theme } from 'lib/types'
+import { author } from 'lib/constants'
 
 const Contact: React.FC = () => {
-  const [formData, dispatch] = React.useReducer(reducer, initialStateForm)
-
-  const inputHandler = (e) => {
-    const { name, value } = e.target
-    dispatch({ type: name, value })
-  }
-
-  const onSubmit = async (e) => {
-    e.preventDefault()
-    dispatch({ type: 'toggle' })
-    await fetch('/api/send-email', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: formData.name,
-        email: formData.email,
-        message: formData.message,
-      }),
-    })
-    dispatch({ type: 'clear_state' })
-  }
-
+  const theme = useTheme<Theme>()
   return (
     <Page>
-      <main css={main}>
+      <main
+        css={css`
+          ${main};
+          text-align: center;
+        `}
+      >
         <section>
-          <h1>
-            Let's talk with me about coding, open-closed projects and business
-          </h1>
-          <p css={text}>
-            It will be a pleasure to meet you, and talk more about your projects
-            and ideas more deeply and in a personal way, send me a message and I
-            will answer you as soon as possible.
-          </p>
+          <h1>Let's talk about coding and business</h1>
+          <h3 css={text}>You can found me in</h3>
+          <ul css={list}>
+            {author?.socialMedia?.map((media) => (
+              <li key={media.name}>
+                <a css={link(theme)} href={media.url} target='_blank'>
+                  {media.name}
+                </a>
+              </li>
+            ))}
+          </ul>
         </section>
-        <Form onSubmit={onSubmit}>
-          <fieldset disabled={formData.loading} aria-busy={formData.loading}>
-            <label htmlFor='email'>
-              Email
-              <input
-                type='email'
-                name='email'
-                placeholder='email'
-                value={formData.email}
-                onChange={inputHandler}
-                required
-              />
-            </label>
-            <label htmlFor='name'>
-              Name
-              <input
-                type='text'
-                name='name'
-                placeholder='name'
-                value={formData.name}
-                onChange={inputHandler}
-                required
-              />
-            </label>
-            <label htmlFor='message'>
-              Message
-              <input
-                type='text'
-                name='message'
-                placeholder='message'
-                value={formData.message}
-                onChange={inputHandler}
-                required
-              />
-            </label>
-            <div className='containerSubmit'>
-              <FaRegHandPointRight />
-              <button type='submit'>SEND</button>
-            </div>
-          </fieldset>
-        </Form>
       </main>
-      <Footer />
     </Page>
   )
 }
