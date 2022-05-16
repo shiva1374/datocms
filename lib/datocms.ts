@@ -66,21 +66,19 @@ query POST_QUERY($slug: String!){
 `
 
 export const getAllPosts = async (): Promise<Post[]> => {
-  // const data = await request({
-  //   query: ALL_POSTS_QUERY,
-  //   variables: { limit: 10 },
-  // })
-  // return data?.allPosts
-  return []
+  const data = await request({
+    query: ALL_POSTS_QUERY,
+    variables: { limit: 10 },
+  })
+  return data?.allPosts
 }
 
 export const getPost = async (slug: string | string[]): Promise<Post> => {
-  // const data = await request({
-  //   query: POST_QUERY,
-  //   variables: { slug: slug },
-  // })
-  // const processedContent = await remark().use(html).process(data?.post.content)
-  // const content = processedContent.toString()
-  // return { ...data?.post, content }
-  return {}
+  const data = await request({
+    query: POST_QUERY,
+    variables: { slug: slug },
+  })
+  const processedContent = await remark().use(html).process(data?.post.content)
+  const content = processedContent.toString()
+  return { ...data?.post, content }
 }
